@@ -1,4 +1,6 @@
+########################
 # Logs
+########################
 logs
 *.log
 npm-debug.log*
@@ -7,18 +9,81 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+########################
+# Node
+########################
 node_modules
 dist
 dist-ssr
+coverage
+
+########################
+# Environment variables
+########################
+.env
+.env.*
+!.env.example
+
+########################
+# Local team files
+########################
+.local
+.local/*
 *.local
 
-# Editor directories and files
+########################
+# OS files
+########################
+.DS_Store
+Thumbs.db
+desktop.ini
+
+########################
+# Editor / IDE
+########################
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.swp
+*.swo
+
+########################
+# Build / cache
+########################
+.cache
+.temp
+.tmp
+.parcel-cache
+.vite
+.eslintcache
+
+########################
+# Testing
+########################
+coverage
+*.lcov
+
+########################
+# Package managers
+########################
+.pnpm-store
+.npm
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+########################
+# Misc
+########################
+*.tgz
+*.zip
+*.tar
+*.gz
