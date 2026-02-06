@@ -27,9 +27,9 @@ coverage
 ########################
 # Local team files
 ########################
-# .local
-# .local/*
-# *.local
+.local
+.local/*
+*.local
 
 ########################
 # OS files
