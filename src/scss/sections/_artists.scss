@@ -1,0 +1,85 @@
+.artists {
+  padding-top: 64px;
+  padding-bottom: 64px;
+
+  &__text {
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  &__subtitle {
+    font-family: 'Epilogue', sans-serif;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+  }
+
+  &__button {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    padding: 10px 24px;
+    width: 288px;
+    height: 47px;
+    box-shadow:
+      0 1px 2px 0 rgba(0, 0, 0, 0.05),
+      inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.15),
+      inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+      inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+    background: #764191;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #ffffff;
+    gap: 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  .artists {
+    &__button {
+      max-width: 340px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .artists {
+    padding-top: 112px;
+    padding-bottom: 112px;
+
+    &__text {
+      max-width: 523px;
+      margin-bottom: 80px;
+    }
+
+    &__subtitle {
+      font-size: 60px;
+    }
+
+    &__button {
+      max-width: 170px;
+    }
+  }
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
