@@ -1,0 +1,153 @@
+.feedback {
+  padding: 48px 0;
+}
+
+.feedback__card {
+  position: relative;
+  background-color: $opacity-neutral-darkest;
+  backdrop-filter: blur(20px);
+}
+
+.feedback__slider-box {
+  position: relative; 
+}
+
+.feedback__slider {
+  width: 100%;
+}
+
+.feedback__slide {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+//------ Рейтинг (5 зірок) ------
+.feedback__rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// ------ Цитата відгуку ------
+.feedback__quote {
+  font-family: "Epilogue", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: $white;
+  padding: 32px 0;
+}
+
+// ------ Автор відгуку ------
+.feedback__author {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;   
+  font-size: 18px;
+  line-height: 1.5;  
+  letter-spacing: 0;
+  color: $white;
+}
+
+// ------ Навігація (стрілки) ------
+.feedback__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid $white-opacity;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  z-index: 5;
+
+  &:hover {
+    border-color: $primary-color;
+    background-color: $primary-color-opacity;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary-color;
+    outline-offset: 2px;
+  }
+}
+
+.feedback__nav--prev {
+  left: 0;
+}
+
+.feedback__nav--next {
+  right: 0;
+}
+
+.feedback__nav-icon {
+  font-size: 18px;
+  line-height: 1;
+  color: $white;
+}
+
+// ------ Пагінація (крапки) ------
+.feedback__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  height: 28px;
+  margin-top: 16px;
+}
+
+.feedback__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: $white-opacity;
+  border: none;
+  padding: 0;
+  transition: all 0.25s ease;
+}
+
+.feedback__dot.is-active {
+  background-color: $white;
+}
+
+// ------ Tablet  ------
+@media only screen and (min-width: 768px) {
+
+  .feedback {
+    padding: 64px 0;
+  }
+  
+  .feedback__quote {
+    font-size: 26px;
+  }
+
+  .feedback__author {
+    font-size: 16px;
+  }
+
+  .feedback__slider {
+    max-width: 518px;
+  }
+}
+
+// ------ Desktop  ------
+@media only screen and (min-width: 1440px) {
+
+  .feedback {
+    padding: 112px 0;
+  }
+  
+  .feedback__quote {
+    font-size: 32px;
+  }
+
+  .feedback__slider {
+    max-width: 866px;
+  }
+}
