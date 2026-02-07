@@ -26,6 +26,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 4px;    
+
+    img {
+      width: 20px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
   }
 
   // ------ Цитата відгуку ------
@@ -36,7 +44,7 @@
     line-height: 1.4;
     letter-spacing: -0.01em;
     color: $white;
-    max-height: 100px;        
+    max-height: 164px;        
     overflow-y: auto;
     padding: 32px 0;    
     scrollbar-width: thin;
@@ -134,7 +142,7 @@
 
     &__quote {
       font-size: 26px;
-      max-height: 146px;
+      max-height: 208px;
     }
 
     &__author {
@@ -152,7 +160,7 @@
 
     &__quote {
       font-size: 32px;
-      max-height: 126px;
+      max-height: 190px;
     }
 
     &__slider {

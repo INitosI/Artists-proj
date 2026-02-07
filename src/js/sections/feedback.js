@@ -2,6 +2,7 @@ import Swiper from 'swiper';
 import 'swiper/css';
 import raty from 'raty-js';
 import { fetchFeedbacks } from '../api/feedback-api';
+import { initFeedbackStars } from '../utils/feedback-stars';
 
 /**
  * Feedback section
@@ -94,7 +95,7 @@ const buildSlideMarkup = item => {
   // - .feedback__slide — це обгортка для одного відгуку, яка буде слайдом у Swiper.
   // - .feedback__rating — це контейнер для зірочок рейтингу, який буде ініціалізований через raty-js.
   return `
-    <div class="feedback__slide swiper-slide">
+    <li class="feedback__slide swiper-slide" role="listitem">
       <div 
         class="feedback__rating"
         data-rating="${ratingRounded}"
@@ -102,7 +103,7 @@ const buildSlideMarkup = item => {
       </div>
       <blockquote class="feedback__quote">"${text}"</blockquote>
       <p class="feedback__author">${name}</p>
-    </div>
+    </li>
   `;
 };
 
@@ -137,6 +138,9 @@ export const initFeedback = async () => {
     // рендеримо максимум 10 відгуків (на випадок, якщо API поверне більше)
     const limited = feedbacks.slice(0, 10);
     renderSlides(limited);
+
+    // ініціалізуємо зірочки рейтингу для відображення після рендеру
+    initFeedbackStars(refs.wrapper);
 
     // по дефолту активуємо першу точку пагінації
     updateFeedbackPagination(0, limited.length);
