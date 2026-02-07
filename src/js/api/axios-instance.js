@@ -14,6 +14,7 @@ const startLoading = () => {
 };
 const stopLoading = () => {
   pendingRequests = Math.max(0, pendingRequests - 1);
+
   if (pendingRequests === 0) hideLoader();
 };
 

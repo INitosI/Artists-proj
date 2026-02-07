@@ -9,9 +9,8 @@ import { fetchFeedbacks } from '../api/feedback-api';
  * - отримати 10 відгуків з API
  * - зрендерити HTML-картки (.swiper-slide)
  * - округлити рейтинг (Math.round)
- * - керувати індикатором пагінації (3 елементи) 
+ * - керувати індикатором пагінації (3 елементи)
  */
-
 
 //  посилання на елементи DOM для подальшого використання в функціях
 const refs = {
@@ -22,9 +21,8 @@ const refs = {
   dotLast: document.querySelector('.feedback__dot--last'),
 };
 
-
 //  функція для безпечного виводу тексту в HTML
-const escapeHtml = (value) => {
+const escapeHtml = value => {
   const str = String(value ?? '');
   return str
     .replaceAll('&', '&amp;')
@@ -44,11 +42,13 @@ const clearActiveDots = () => {
 };
 
 // функція для встановлення активного класу на потрібну точку
-const setActiveDot = (type) => {
+const setActiveDot = type => {
   clearActiveDots();
 
-  if (type === 'first' && refs.dotFirst) refs.dotFirst.classList.add('is-active');
-  if (type === 'middle' && refs.dotMiddle) refs.dotMiddle.classList.add('is-active');
+  if (type === 'first' && refs.dotFirst)
+    refs.dotFirst.classList.add('is-active');
+  if (type === 'middle' && refs.dotMiddle)
+    refs.dotMiddle.classList.add('is-active');
   if (type === 'last' && refs.dotLast) refs.dotLast.classList.add('is-active');
 };
 
@@ -82,8 +82,8 @@ export const updateFeedbackPagination = (activeIndex, totalSlides) => {
 /* ---------- Markup ------------------------------------*/
 
 // функція для створення HTML-розмітки одного слайду на основі даних відгуку
-const buildSlideMarkup = (item) => {
-  const name = escapeHtml(item?.name ?? 'Anonymous'); //обробка на безпечний вивід + перевірка на наявність і якщо його немає, призначення дефолтного значення 
+const buildSlideMarkup = item => {
+  const name = escapeHtml(item?.name ?? 'Anonymous'); //обробка на безпечний вивід + перевірка на наявність і якщо його немає, призначення дефолтного значення
   const text = escapeHtml(item?.descr ?? '');
 
   // округлення рейтингу до найближчого цілого числа, якщо це можливо, і призначення 0, якщо рейтинг не є числом
@@ -107,7 +107,7 @@ const buildSlideMarkup = (item) => {
 };
 
 // функція для рендерингу масиву відгуків у вигляді слайдів у Swiper
-const renderSlides = (items) => {
+const renderSlides = items => {
   if (!refs.wrapper) return;
   refs.wrapper.innerHTML = items.map(buildSlideMarkup).join('');
 };
@@ -119,9 +119,9 @@ export const initFeedback = async () => {
   if (!refs.section || !refs.wrapper) return;
 
   try {
-    // отримуємо відгуки з API 
+    // отримуємо відгуки з API
     const feedbacks = await fetchFeedbacks({ limit: 10, page: 1 });
-    
+
     // якщо відгуків немає, показуємо повідомлення і встановлюємо пагінацію на 0 з 1
     if (!feedbacks.length) {
       refs.wrapper.innerHTML = `
