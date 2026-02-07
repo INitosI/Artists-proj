@@ -5,8 +5,15 @@ export const initArtists = async ({ limit, page }) => {
   return getArtistsInfo({ limit, page });
 };
 
-const page = 1;
-const params = { limit: 8, page };
+const loadMoreBtn = document.querySelector('.artists__button');
+let page = 1;
+let params = { limit: 8, page };
+
+loadMoreBtn.addEventListener('click', () => {
+  page += 1;
+  params = { limit: 8, page };
+  loadArtists(params);
+});
 
 async function loadArtists() {
   const artists = await initArtists(params);
