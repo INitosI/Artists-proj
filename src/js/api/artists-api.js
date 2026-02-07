@@ -6,6 +6,8 @@ const fetchArtists = params =>
 export const getArtistsInfo = async params => {
   try {
     const response = await fetchArtists(params);
-    const artists = response.artists;
-  } catch (error) {}
+    return response.artists;
+  } catch (error) {
+    throw error;
+  }
 };
