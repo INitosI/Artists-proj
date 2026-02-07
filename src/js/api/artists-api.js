@@ -4,10 +4,6 @@ const fetchArtists = params =>
   instance.get('/artists', { params }).then(({ data }) => data);
 
 export const getArtistsInfo = async params => {
-  try {
-    const response = await fetchArtists(params);
-    return response.artists;
-  } catch (error) {
-    throw error;
-  }
+  const response = await fetchArtists(params);
+  return response.artists || [];
 };
