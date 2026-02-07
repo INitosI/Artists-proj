@@ -85,7 +85,7 @@ npm run build
 
 ## 🌐 API
 
-Бекенд: `https://sound-wave.b.goit.study`  
+Бекенд: `https://sound-wave.b.goit.study/api`  
 Документація: [API Docs](https://sound-wave.b.goit.study/api-docs/)
 
 ### Основні маршрути:
