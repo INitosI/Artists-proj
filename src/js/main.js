@@ -6,6 +6,7 @@ import { initAbout } from './sections/about';
 import { initArtists } from './sections/artists';
 import { initFeedback } from './sections/feedback';
 import { initFooter } from './sections/footer';
+import { initModal } from './utils/modal';
 
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
@@ -14,4 +15,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initAbout();
   initFeedback();
   initFooter();
+  initModal();
 });

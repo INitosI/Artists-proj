@@ -87,3 +87,6 @@ coverage
 *.zip
 *.tar
 *.gz
+
+# pull request list
+pull_request_list.txt
