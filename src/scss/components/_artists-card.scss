@@ -74,6 +74,10 @@
     opacity: 0.6;
   }
 
+  &__learn-more-icon {
+    fill: #ffffff;
+  }
+
   @media (min-width: 768px) {
     .artists {
       &__item:last-child {
