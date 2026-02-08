@@ -47,6 +47,14 @@
     color: #ffffff;
     gap: 12px;
   }
+
+  &__load-more-icon {
+    fill: #ffffff;
+  }
+
+  &__button:hover {
+    opacity: 0.6;
+  }
 }
 
 @media (min-width: 768px) {
