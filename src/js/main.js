@@ -10,7 +10,7 @@ import { initFooter } from './sections/footer';
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
   initHero();
-  initArtists();
+   initArtists({ limit: 8, page: 1 });
   initAbout();
   initFeedback();
   initFooter();
