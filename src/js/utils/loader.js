@@ -36,7 +36,9 @@ export const hideLoader = () => {
   if (hideTimeout) clearTimeout(hideTimeout);
 
   hideTimeout = setTimeout(() => {
-    loaderElement?.classList.remove('is-visible');
+    if (loaderElement) {
+      loaderElement.classList.remove('is-visible');
+    }
     hideTimeout = null;
   }, delay);
 };
