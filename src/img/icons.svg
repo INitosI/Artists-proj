@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<defs>
+
+<symbol id="icon-burger-menu" viewBox="0 0 32 32">
+<path d="M5.333 8h21.333v2.667H5.333V8zm5.334 6.667h16v2.667h-16v-2.667zm6.666 6.666h9.333V24h-9.333v-2.667z"/>
+</symbol>
+
+<symbol id="icon-close-btn" viewBox="0 0 32 32">
+<path d="m21.589 8.459-5.657 5.656-5.656-5.656-1.885 1.885L14.047 16l-5.656 5.656 1.885 1.885 5.656-5.656 5.657 5.656 1.885-1.885L17.818 16l5.656-5.656-1.885-1.885z"/>
+</symbol>
+
+</defs>
+</svg>
