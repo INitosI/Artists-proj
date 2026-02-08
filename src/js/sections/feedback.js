@@ -8,7 +8,6 @@ const initSwiper = slidesCount => {
   if (swiperInstance) {
     swiperInstance.destroy(true, true);
   }
-  
     swiperInstance = new Swiper('.feedback__slider', {
     
     modules: [Navigation, Pagination],
