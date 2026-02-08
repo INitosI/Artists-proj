@@ -1,6 +1,6 @@
 import { Navigation, Pagination } from 'swiper/modules';
 
-/* ---------- Swiper ---------------------- */
+/* ------------ Swiper ---------------------- */
 
 let swiperInstance = null;
 
