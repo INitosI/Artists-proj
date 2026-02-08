@@ -80,7 +80,7 @@
     border-radius: 8px;
     border: 1px solid $white-opacity;
     background-color: transparent;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -152,6 +152,10 @@
     &__slider {
       max-width: 518px;
     }
+
+      &__nav {
+        display: flex;
+      }
   }
 
   // ------ Desktop ------
