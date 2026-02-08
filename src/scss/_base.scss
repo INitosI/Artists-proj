@@ -34,3 +34,23 @@ body {
   min-height: 100vh;
   margin: 0;
 }
+
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px;
+}
+
+@media screen and (min-width: 768px) {
+  html{scroll-padding-top: 72px;}
+}
+
+main {
+  padding-top: 64px;
+}
+
+@media screen and (min-width: 768px) {
+  main {
+    padding-top: 72px;
+  }
+}
