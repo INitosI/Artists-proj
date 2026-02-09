@@ -11,7 +11,7 @@ import { initModal } from './utils/modal';
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
   initHero();
-  initArtists();
+  initArtists({ limit: 8, page: 1 });
   initAbout();
   initFeedback();
   initFooter();

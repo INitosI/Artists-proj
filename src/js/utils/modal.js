@@ -8,18 +8,12 @@ export const initModal = () => {
     return;
   }
 
-  // ----------------------------
-  // CLICK LISTENER
-  // ----------------------------
   document.addEventListener('click', async event => {
     const trigger = event.target.closest('[data-id]');
     if (!trigger) return;
 
     const artistId = trigger.dataset.id;
 
-    // ----------------------------
-    // 1️⃣ ПОКАЗ ЛОАДЕРА
-    // ----------------------------
     modalRoot.innerHTML = `
       <div class="modal__content">
         <div class="modal__loader"></div>
@@ -28,9 +22,6 @@ export const initModal = () => {
     modalRoot.style.display = 'flex';
 
     try {
-      // ----------------------------
-      // 2️⃣ ВИКОНАННЯ FETCH
-      // ----------------------------
       const artist = await fetchArtistById(artistId);
 
       if (!artist) {
@@ -39,9 +30,6 @@ export const initModal = () => {
         return;
       }
 
-      // ----------------------------
-      // 3️⃣ РЕНДЕР КОНТЕНТУ
-      // ----------------------------
       renderModal(artist, modalRoot);
     } catch (error) {
       console.error(error);
@@ -49,9 +37,6 @@ export const initModal = () => {
     }
   });
 
-  // ----------------------------
-  // ЗАКРИТТЯ МОДАЛКИ
-  // ----------------------------
   modalRoot.addEventListener('click', event => {
     if (
       event.target === modalRoot ||
