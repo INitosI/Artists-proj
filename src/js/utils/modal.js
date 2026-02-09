@@ -3,11 +3,6 @@ import { fetchArtistById } from '../api/artists-api.js';
 export const initModal = () => {
   const modalRoot = document.getElementById('modal-root');
 
-  // if (!modalRoot) {
-  //   console.error('modal-root not found');
-  //   return;
-  // }
-
   document.addEventListener('click', async event => {
     const trigger = event.target.closest('[data-id]');
     if (!trigger) return;
@@ -22,19 +17,17 @@ export const initModal = () => {
     modalRoot.style.display = 'flex';
 
     try {
-      const artist = fetchArtistById(artistId);
+      const artist = await fetchArtistById(artistId);
 
-      // if (!artist) {
-      //   console.error('Artist not found');
-      //   modalRoot.style.display = 'none';
-      //   return;
-      // }
+      if (!artist) {
+        modalRoot.style.display = 'none';
+        return;
+      }
 
       console.log(artist);
 
       renderModal(artist, modalRoot);
     } catch (error) {
-      console.error(error);
       modalRoot.style.display = 'none';
     }
   });
@@ -58,7 +51,7 @@ const renderModal = (artist, modalRoot) => {
 
       <div class="modal__body">
         <div class="modal__image-artist">
-          <img src="${artist.strArtistThumb}" alt="${artist.strArtistThumb}">
+          <img  class="modal__image-artist-img" src="${artist.strArtistThumb}" alt="${artist.strArtistThumb}">
         </div>
 
         <div class="modal__description">

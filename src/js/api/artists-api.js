@@ -10,5 +10,5 @@ export const getArtistsInfo = async params => {
 
 export const fetchArtistById = async id => {
   const response = await instance.get(`/artists/${id}`);
-  return response.data.artist || null;
+  return response.data || null;
 };

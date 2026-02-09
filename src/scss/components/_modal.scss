@@ -8,17 +8,18 @@
   display: none;
   justify-content: center;
   align-items: center;
+  position: fixed;
 
   &__content {
     position: relative;
     background-color: #060307;
     padding: 64px;
     border-radius: 8px;
-    min-width: 1312px;
-    max-height: 90vh;
-    width: 90%;
+    max-width: 1312px;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 
   &__close-btn {
@@ -50,27 +51,30 @@
     gap: 32px;
     justify-content: center;
     min-width: 1185px;  
+    max-height: calc(90vh - 120px);
+    overflow-y: auto;
 
     & > .modal__image-artist {
-      width: 575px;
-      height: 355px;
+      max-width: 575px;
+      max-height: 355px;
       background-color: #ddd;
+      object-fit: cover;
       border-radius: 8px;
       flex-shrink: 0;
+    }
 
-      img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: cover;
-        border-radius: 8px;
-      }
+    .modal__image-artist-img {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 8px;
     }
 
     .modal__description {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 20px;  
+      gap: 20px;
+
 
       &-grid {
         display: grid;
@@ -81,6 +85,8 @@
 
       &-bio {
         max-width: 576px;
+      //   max-height: 162px;
+      //  overflow-y: auto;
       }
     }
 
@@ -99,7 +105,6 @@
       line-height: 1.5;
       color: #fff;
       max-width: 576px;
-      max-height: 162px;
     }
 
     .modal__description-item {
