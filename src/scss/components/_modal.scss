@@ -14,7 +14,7 @@
     background-color: #060307;
     padding: 64px;
     border-radius: 8px;
-    min-width: 1440px;
+    min-width: 1312px;
     max-height: 90vh;
     width: 90%;
     display: flex;
@@ -33,11 +33,15 @@
   }
 
   &__title {
+    font-family: "Epilogue", sans-serif;
     margin-top: 64px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #fff;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
     text-align: center;
+    color: #fff;
+
   }
 
   &__body {
@@ -78,32 +82,47 @@
 
       &-bio {
         max-width: 576px;
+      }
 
-        .modal__description-item {
-          display: flex;
-          flex-direction: column;
-
-          .modal__description-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 4px;
-            max-width: 145px;
-            position: relative;
-
-          }
-
-          .modal__description-value {
-            font-size: 16px;
-            color: #fff;
-            max-width: 145px;
-          }
-
-          .modal__description-genres{
-            background: #fff;
-          }
-        }
       }
     }
+
+  //   .modal__description-item {
+  //         display: flex;
+  //         flex-direction: column;
+
+  //         .modal__description-title {
+  //           font-size: 16px;
+  //           font-weight: 600;
+  //           color: #fff;
+  //           margin-bottom: 4px;
+  //           position: relative;
+
+  //         }
+
+  //         .modal__description-value {
+  //           font-size: 16px;
+  //           color: #fff;
+  //         }
+
+  //         .modal__description-genres{
+  //           background: #fff;
+  //         }
+  //       }
+  // }
+
+  .modal__description-genres-list {
+  display: flex;
+  flex-wrap: wrap;       // рядок з переносом
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.modal__description-genres-item {
+border: 1px solid rgba(255, 255, 255, 0.2);
+border-radius: 6px;
+padding: 4px 10px;
   }
 }
