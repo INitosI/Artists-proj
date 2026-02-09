@@ -159,11 +159,12 @@ export const initFeedback = async () => {
     // якщо відгуків немає, показуємо повідомлення і встановлюємо пагінацію на 0 з 1
     if (!feedbacks.length) {
       refs.wrapper.innerHTML = `
-        <div class="feedback__slide swiper-slide">
+        <li class="feedback__slide swiper-slide">
           <blockquote class="feedback__quote">"No feedbacks yet."</blockquote>
           <p class="feedback__author">—</p>
-        </div>
+        </li>
       `;
+      initSwiper(1);
       updateFeedbackPagination(0, 1);
       return;
     }
@@ -171,6 +172,9 @@ export const initFeedback = async () => {
     // рендеримо максимум 10 відгуків (на випадок, якщо API поверне більше)
     const limited = feedbacks.slice(0, 10);
     renderSlides(limited);
+
+    // ініціалізуємо Swiper після рендеру слайдів, передаючи кількість відгуків для коректної роботи пагінації
+    initSwiper(limited.length);
 
     // ініціалізуємо зірочки рейтингу для відображення після рендеру
     initFeedbackStars(refs.wrapper);
