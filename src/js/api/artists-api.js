@@ -7,3 +7,8 @@ export const getArtistsInfo = async params => {
   const response = await fetchArtists(params);
   return response.artists || [];
 };
+
+export const fetchArtistById = async id => {
+  const response = await instance.get(`/artists/${id}`);
+  return response.data || null;
+};
