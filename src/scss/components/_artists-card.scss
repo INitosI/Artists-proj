@@ -70,6 +70,10 @@
     background-color: #060307;
   }
 
+  &__learn-more:hover {
+    opacity: 0.6;
+  }
+
   @media (min-width: 768px) {
     .artists {
       &__item:last-child {
