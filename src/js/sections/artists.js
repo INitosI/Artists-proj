@@ -7,17 +7,22 @@ export const initArtists = async ({ limit, page }) => {
 
 const loadMoreBtn = document.querySelector('.artists__button');
 let page = 1;
-let params = { limit: 8, page };
+let params = { limit: 8, page: 1 };
 
 loadMoreBtn.addEventListener('click', () => {
   page += 1;
   params = { limit: 8, page };
-  loadArtists(params);
+  loadArtists();
 });
 
 async function loadArtists() {
   const artists = await initArtists(params);
   renderArtists(artists);
+
+  // Скрываем кнопку "Load More", если загружено меньше артистов, чем лимит
+  if (artists.length < params.limit) {
+    loadMoreBtn.style.display = 'none';
+  }
 }
 
 loadArtists();
