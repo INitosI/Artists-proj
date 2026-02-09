@@ -1,44 +1,70 @@
 import { fetchArtistById } from '../api/fake-data.js';
 
-const modalRoot = document.getElementById('modal-root');
-
 export const initModal = () => {
-  // Відкриття модалки при кліку на елемент з data-artist-id
+  const modalRoot = document.getElementById('modal-root');
+
+  if (!modalRoot) {
+    console.error('modal-root not found');
+    return;
+  }
+
+  // ----------------------------
+  // CLICK LISTENER
+  // ----------------------------
   document.addEventListener('click', async event => {
-    const trigger = event.target.closest('[data-artist-id]');
+    const trigger = event.target.closest('[data-id]');
     if (!trigger) return;
 
-    const artistId = Number(trigger.dataset.artistId);
+    const artistId = trigger.dataset.id;
+
+    // ----------------------------
+    // 1️⃣ ПОКАЗ ЛОАДЕРА
+    // ----------------------------
+    modalRoot.innerHTML = `
+      <div class="modal__content">
+        <div class="modal__loader"></div>
+      </div>
+    `;
+    modalRoot.style.display = 'flex';
 
     try {
-      const { data } = await fetchArtistById(artistId);
+      // ----------------------------
+      // 2️⃣ ВИКОНАННЯ FETCH
+      // ----------------------------
+      const artist = await fetchArtistById(artistId);
 
-      if (!data) {
+      if (!artist) {
         console.error('Artist not found');
+        modalRoot.style.display = 'none';
         return;
       }
 
-      renderModal(data);
+      // ----------------------------
+      // 3️⃣ РЕНДЕР КОНТЕНТУ
+      // ----------------------------
+      renderModal(artist, modalRoot);
     } catch (error) {
       console.error(error);
+      modalRoot.style.display = 'none';
     }
   });
 
-  // Закриття модалки при кліку на бекдроп або на кнопку
-  modalRoot.addEventListener('click', e => {
+  // ----------------------------
+  // ЗАКРИТТЯ МОДАЛКИ
+  // ----------------------------
+  modalRoot.addEventListener('click', event => {
     if (
-      e.target === modalRoot ||
-      e.target.classList.contains('modal__close-btn')
+      event.target === modalRoot ||
+      event.target.classList.contains('modal__close-btn')
     ) {
-      closeModal();
+      closeModal(modalRoot);
     }
   });
 };
 
-// Функція рендеру модалки
-const renderModal = artist => {
+const renderModal = (artist, modalRoot) => {
   modalRoot.innerHTML = `
-    <div class="modal__content" role="dialog" aria-modal="true" data-artist-id="${artist.id}">
+    <div class="modal__content" role="dialog" aria-modal="true">
       <button class="modal__close-btn" aria-label="Close modal">&times;</button>
 
       <h2 class="modal__title">${artist.name}</h2>
@@ -69,15 +95,18 @@ const renderModal = artist => {
           </div>
 
           <div class="modal__description-bio">
-            <h3>Biography</h3>
-            <p>${artist.bio}</p>
+            <h3 class="modal__description-bio-title">Biography</h3>
+            <p class="modal__description-bio-text">${artist.bio}</p>
           </div>
 
-          <div class="modal__description-genres">
-            <ul class="modal__description-genres-list">
-              ${artist.genres ? artist.genres.map(genre => `<li class="modal__description-genres-item">${genre}</li>`).join('') : ''}
-            </ul>
-          </div>
+          <ul class="modal__description-genres-list">
+            ${artist.genres
+              .map(
+                genre =>
+                  `<li class="modal__description-genres-item">${genre}</li>`
+              )
+              .join('')}
+          </ul>
         </div>
       </div>
     </div>
@@ -86,8 +115,7 @@ const renderModal = artist => {
   modalRoot.style.display = 'flex';
 };
 
-// Закриття модалки
-const closeModal = () => {
+const closeModal = modalRoot => {
   modalRoot.innerHTML = '';
   modalRoot.style.display = 'none';
 };
