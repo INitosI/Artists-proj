@@ -1,8 +1,10 @@
 import Swiper from 'swiper';
 import 'swiper/css';
+import { Navigation, Pagination } from 'swiper/modules';
 import raty from 'raty-js';
 import { fetchFeedbacks } from '../api/feedback-api';
 import { initFeedbackStars } from '../utils/feedback-stars';
+
 
 /**
  * Feedback section
@@ -113,6 +115,37 @@ const renderSlides = items => {
   refs.wrapper.innerHTML = items.map(buildSlideMarkup).join('');
 };
 
+/* ------------ Swiper ---------------------- */
+
+let swiperInstance = null;
+
+const initSwiper = slidesCount => {
+  if (swiperInstance) {
+    swiperInstance.destroy(true, true);
+  }
+    swiperInstance = new Swiper('.feedback__slider', {
+    
+    modules: [Navigation, Pagination],
+    slidesPerView: 1,
+    spaceBetween: 24,
+    loop: false,
+
+    navigation: {
+      nextEl: '.feedback__nav--next',
+      prevEl: '.feedback__nav--prev',
+    },
+
+    on: {
+      init(swiper) {
+        updateFeedbackPagination(swiper.activeIndex, slidesCount);
+      },
+      slideChange(swiper) {
+        updateFeedbackPagination(swiper.activeIndex, slidesCount);
+      },
+    },
+  });
+};
+
 /* ---------- Init ----------*/
 
 // головна функція для ініціалізації секції відгуків
@@ -148,3 +181,4 @@ export const initFeedback = async () => {
     // помилки показуються через axios-instance (toast)
   }
 };
+
