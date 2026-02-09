@@ -1,3 +1,19 @@
+// const getFeedbacks = params =>
+//   instance.get('/feedbacks', { params }).then(({ data }) => data);
+
+// export const fetchFeedbacks = async params => {
+//   try {
+//     const response = await getFeedbacks(params);
+//     const artists = response.artists;
+//   } catch (error) {}
+// };
+
 import instance from './axios-instance';
 
-export const fetchFeedbacks = params => instance.get('/feedbacks', { params });
+const getFeedbacks = async params =>
+  await instance.get('/feedbacks', { params }).then(({ data }) => data);
+
+export const fetchFeedbacks = async params => {
+  const response = await getFeedbacks(params);
+  return response.data || [];
+};
