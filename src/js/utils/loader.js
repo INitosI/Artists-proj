@@ -1,5 +1,4 @@
 let loaderElement = null;
-let activeRequests = 0;
 let hideTimeout = null;
 
 const MIN_VISIBLE_TIME = 300;
@@ -13,17 +12,17 @@ const createLoader = () => {
 };
 
 export const showLoader = () => {
-  activeRequests += 1;
-
   if (!loaderElement) {
     createLoader();
   }
 
-  if (activeRequests === 1) {
+  // Показываем лоадер, если он еще не видим
+  if (!loaderElement.classList.contains('is-visible')) {
     lastShowTime = Date.now();
     loaderElement.classList.add('is-visible');
   }
 
+  // Отменяем запланированное скрытие, если оно было
   if (hideTimeout) {
     clearTimeout(hideTimeout);
     hideTimeout = null;
@@ -31,17 +30,15 @@ export const showLoader = () => {
 };
 
 export const hideLoader = () => {
-  if (activeRequests === 0) return;
-
-  activeRequests -= 1;
-
-  if (activeRequests > 0) return;
-
   const elapsed = Date.now() - lastShowTime;
   const delay = Math.max(0, MIN_VISIBLE_TIME - elapsed);
 
+  if (hideTimeout) clearTimeout(hideTimeout);
+
   hideTimeout = setTimeout(() => {
-    loaderElement?.classList.remove('is-visible');
+    if (loaderElement) {
+      loaderElement.classList.remove('is-visible');
+    }
     hideTimeout = null;
   }, delay);
 };

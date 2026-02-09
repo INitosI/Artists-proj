@@ -1,0 +1,109 @@
+.artists {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    margin-bottom: 32px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__img {
+    border-radius: 16px;
+    width: 288px;
+    height: 177px;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  &__genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__genre {
+    border: 1px solid #ffffff33;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 32px;
+    font-family: 'Epilogue', sans-serif;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+  }
+
+  &__desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+    font-size: 18px;
+    color: #ffffff;
+  }
+
+  &__learn-more {
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: start;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    width: 125px;
+    height: 27px;
+    color: #ffffff;
+    background-color: #060307;
+  }
+
+  &__learn-more:hover {
+    opacity: 0.6;
+  }
+
+  @media (min-width: 768px) {
+    .artists {
+      &__item:last-child {
+        margin-bottom: 32px;
+      }
+
+      &__img {
+        width: 704px;
+        height: 432px;
+      }
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .artists {
+      &__list {
+        margin-bottom: 64px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 32px;
+      }
+
+      &__item {
+        width: calc((100% - 32px) / 2);
+      }
+
+      &__img {
+        width: 640px;
+        height: 393px;
+      }
+    }
+  }
+}
