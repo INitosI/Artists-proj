@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ArtistsHub</title>
     <script type="module" crossorigin src="/Artists-proj/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/Artists-proj/assets/vendor-CK1Rzdhu.js">
-    <link rel="stylesheet" crossorigin href="/Artists-proj/assets/vendor-DnveWo0P.css">
-    <link rel="stylesheet" crossorigin href="/Artists-proj/assets/index-m8rlbrtD.css">
+    <link rel="modulepreload" crossorigin href="/Artists-proj/assets/vendor-CEL2a_m2.js">
+    <link rel="stylesheet" crossorigin href="/Artists-proj/assets/vendor-fH2XiLov.css">
+    <link rel="stylesheet" crossorigin href="/Artists-proj/assets/index-Ce-hzKfn.css">
   </head>
   <body>
     <header class="header">
@@ -67,10 +67,39 @@
   </div>
 </section>
 
-      <section class="feedback">
-  <div class="container">
+      <section class="feedback" id="reviews">
+  <div class="container feedback__container">
+
     <div class="feedback__content">
-      <p>Feedback</p>
+      <h2 class="visually-hidden">Feedbacks our visitors</h2>
+
+      <div class="feedback__card">
+
+        <div class="feedback__slider-box">
+          
+          <button class="feedback__nav feedback__nav--prev" type="button" aria-label="Previous feedback">
+            <span class="feedback__nav-icon" aria-hidden="true">←</span>
+          </button>
+         
+          <button class="feedback__nav feedback__nav--next" type="button" aria-label="Next feedback">
+            <span class="feedback__nav-icon" aria-hidden="true">→</span>
+          </button>
+
+          <!-- Feedback slider -->
+          <div class="feedback__slider swiper" aria-label="Feedback slider">
+            <ul class="feedback__wrapper swiper-wrapper" role="list">              
+            </ul>
+          </div>
+        </div>
+
+        <!-- Feedback pagination -->
+        <div class="feedback__pagination" aria-label="Feedback pagination">
+          <button class="feedback__dot feedback__dot--first is-active" type="button" aria-label="First slide"></button>
+          <button class="feedback__dot feedback__dot--middle" type="button" aria-label="Middle slides"></button>
+          <button class="feedback__dot feedback__dot--last" type="button" aria-label="Last slide"></button>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
