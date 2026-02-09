@@ -141,22 +141,5 @@
     border-radius: 6px;
     padding: 4px 10px;
   }
-
-
-  &__loader {
-    border: 6px solid rgba(5, 143, 0, 0.2);
-    border-top-color: #1a00dd;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-    margin: auto;
-  }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
   }
 } 
