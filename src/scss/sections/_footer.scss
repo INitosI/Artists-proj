@@ -1,0 +1,164 @@
+.footer {
+    &__inner {
+        margin: 48px 0 0 0;
+        padding: 0 0 64px 0;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        width: max-content;
+
+        svg {
+            color: #764191;
+        }
+    }
+
+    &__logo-icon {
+        &--desktop {
+            display: none; 
+            margin: 0;
+            padding: 0;
+        }
+
+        &--mobile {
+            display: block; 
+        }
+    }
+
+    &__nav-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 32px auto 48px auto;
+        gap: 32px;
+    }
+
+    &__nav-link {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #FFFFFF;
+    }
+
+    &__bottom {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 32px;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    &__socials {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        margin: 48px auto 32px;
+        padding-top: 24px;
+        width: 100%;
+        max-width: 343px;
+    }
+
+    &__socials-link {
+        .footer__socials-icon {
+            &--mobile {
+                display: block !important; 
+                width: 32px !important;
+                height: 32px !important;
+                fill: white !important;
+            }
+
+            &--desktop {
+                display: none !important; 
+            }
+        }
+    }
+
+    &__copyright {
+        display: flex;
+        justify-content: center;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #FFFFFF;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .footer {
+        &__inner {
+            margin: 80px 0 0 0;
+            padding: 0 0 80px 0;
+        }
+
+        &__logo-icon--desktop {
+            display: block;
+        }
+
+        &__logo-icon--mobile {
+            display: none;
+        }
+
+        &__nav-list {
+            flex-direction: row;
+            justify-content: center;
+            margin: 32px auto 80px auto;
+        }
+
+        &__bottom {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 704px;
+            margin: 0 auto;
+        }
+
+        &__socials {
+            justify-content: flex-end;
+            margin: 32px 0 0 0;
+            padding: 0;
+            border-top: none;
+        }
+
+        &__copyright {
+            align-items: center;
+            margin: 32px 0 0 0;
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .footer {
+        &__bottom {
+            max-width: 1312px;
+            padding: 32px 0 0 0;
+        }
+
+        &__socials-link {
+            .footer__socials-icon--mobile {
+                display: none !important;
+            }
+
+            .footer__socials-icon--desktop {
+                display: block !important;
+                width: 24px !important;
+                height: 24px !important;
+            }
+        }
+
+        &__copyright {
+            min-width: 278px;
+            margin: 0;
+        }
+
+        &__socials {
+            margin: 0;
+        }
+    }
+}

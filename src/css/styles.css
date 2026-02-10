@@ -137,6 +137,122 @@ body {
     padding: 0 64px;
   }
 }
+.artists__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 64px;
+  margin-bottom: 32px;
+}
+.artists__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 24px;
+}
+.artists__img {
+  border-radius: 16px;
+  width: 288px;
+  height: 177px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+.artists__genres {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 16px;
+}
+.artists__genre {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.artists__name {
+  font-weight: 700;
+  font-size: 32px;
+  font-family: "Epilogue", sans-serif;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+.artists__desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 400;
+  font-size: 18px;
+  color: #ffffff;
+}
+.artists__learn-more {
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  width: 125px;
+  height: 27px;
+  color: #ffffff;
+  background-color: #060307;
+}
+.artists__learn-more:hover {
+  opacity: 0.6;
+}
+@media (min-width: 768px) {
+  .artists .artists__item:last-child {
+    margin-bottom: 32px;
+  }
+  .artists .artists__img {
+    width: 704px;
+    height: 432px;
+  }
+}
+@media (min-width: 1440px) {
+  .artists .artists__list {
+    margin-bottom: 64px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 32px;
+  }
+  .artists .artists__item {
+    width: calc((100% - 32px) / 2);
+  }
+  .artists .artists__img {
+    width: 640px;
+    height: 393px;
+  }
+}
+
 .loader {
   position: fixed;
   inset: 0;
@@ -191,5 +307,339 @@ body {
   to {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
+  }
+}
+.about__content {
+  margin: 64px 0;
+}
+.about__img {
+  display: block;
+  width: 100%;
+  max-width: 343px;
+  height: 168px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 0 auto 48px auto;
+  border-radius: 16px;
+}
+.about__icon {
+  display: block;
+}
+.about__title {
+  margin: 20px 0 0 0;
+  font-family: "Epilogue", sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.about__text {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 288px;
+  margin: 20px 0 0 0;
+}
+
+@media screen and (min-width: 768px) {
+  .about__img {
+    max-width: 704px;
+    height: 413px;
+  }
+  .about__title {
+    margin: 24px 0 0 0;
+  }
+  .about__text {
+    font-size: 20px;
+    max-width: 704px;
+    margin: 24px 0 0 0;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .about__content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin: 112px 0;
+    gap: 32px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .about__info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 187px 0;
+  }
+  .about__img {
+    max-width: 640px;
+    height: 665px;
+    margin: 0;
+  }
+  .about__title {
+    font-size: 60px;
+  }
+  .about__text {
+    font-size: 20px;
+    max-width: 640px;
+  }
+}
+.artists {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+.artists__text {
+  margin-bottom: 32px;
+}
+.artists__title {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.artists__subtitle {
+  font-family: "Epilogue", sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+.artists__button {
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 12px;
+  padding: 10px 24px;
+  width: 288px;
+  height: 47px;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.15), inset 0 2px 1px 0 rgba(255, 255, 255, 0.25), inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.15), inset 0 2px 1px 0 rgba(255, 255, 255, 0.25), inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+  background: #764191;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #ffffff;
+  gap: 12px;
+}
+.artists__load-more-icon {
+  fill: #ffffff;
+}
+.artists__button:hover {
+  opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+  .artists__button {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1440px) {
+  .artists {
+    padding-top: 112px;
+    padding-bottom: 112px;
+  }
+  .artists__text {
+    max-width: 523px;
+    margin-bottom: 80px;
+  }
+  .artists__subtitle {
+    font-size: 60px;
+  }
+  .artists__button {
+    max-width: 170px;
+  }
+}
+.footer__inner {
+  margin: 48px 0 0 0;
+  padding: 0 0 64px 0;
+}
+.footer__logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+.footer__logo svg {
+  color: #764191;
+}
+.footer__logo-icon--desktop {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+.footer__logo-icon--mobile {
+  display: block;
+}
+.footer__nav-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 32px auto 48px auto;
+  gap: 32px;
+}
+.footer__nav-link {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #FFFFFF;
+}
+.footer__bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  gap: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer__socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 32px;
+  margin: 48px auto 32px;
+  padding-top: 24px;
+  width: 100%;
+  max-width: 343px;
+}
+.footer__socials-link .footer__socials-icon--mobile {
+  display: block !important;
+  width: 32px !important;
+  height: 32px !important;
+  fill: white !important;
+}
+.footer__socials-link .footer__socials-icon--desktop {
+  display: none !important;
+}
+.footer__copyright {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #FFFFFF;
+}
+
+@media screen and (min-width: 768px) {
+  .footer__inner {
+    margin: 80px 0 0 0;
+    padding: 0 0 80px 0;
+  }
+  .footer__logo-icon--desktop {
+    display: block;
+  }
+  .footer__logo-icon--mobile {
+    display: none;
+  }
+  .footer__nav-list {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 32px auto 80px auto;
+  }
+  .footer__bottom {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 704px;
+    margin: 0 auto;
+  }
+  .footer__socials {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    margin: 32px 0 0 0;
+    padding: 0;
+    border-top: none;
+  }
+  .footer__copyright {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 32px 0 0 0;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .footer__bottom {
+    max-width: 1312px;
+    padding: 32px 0 0 0;
+  }
+  .footer__socials-link .footer__socials-icon--mobile {
+    display: none !important;
+  }
+  .footer__socials-link .footer__socials-icon--desktop {
+    display: block !important;
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .footer__copyright {
+    min-width: 278px;
+    margin: 0;
+  }
+  .footer__socials {
+    margin: 0;
   }
 }

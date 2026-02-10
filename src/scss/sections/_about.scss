@@ -1,0 +1,91 @@
+.about {
+    &__content {
+        margin: 64px 0;
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+        max-width: 343px;
+        height: 168px;
+        object-fit: cover;
+
+        margin: 0 auto 48px auto;
+        border-radius: 16px;
+    }
+
+    &__icon {
+        display: block;
+    }
+
+    &__title {
+        margin: 20px 0 0 0;
+
+        font-family: 'Epilogue', sans-serif;
+        font-weight: 700;
+        font-size: 44px;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+    }
+
+    &__text {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 18px;
+        line-height: 1.5;
+
+        max-width: 288px;
+        margin: 20px 0 0 0;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .about {
+        &__img {
+            max-width: 704px;
+            height: 413px;
+        }
+
+        &__title {
+            margin: 24px 0 0 0;
+        }
+
+        &__text {
+            font-size: 20px;
+            max-width: 704px;
+            margin: 24px 0 0 0;
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .about {
+        &__content {
+            display: flex;
+            flex-direction: row;
+            margin: 112px 0;
+            gap: 32px;
+            align-items: center; 
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+            margin: 187px 0;
+        }
+
+        &__img {
+            max-width: 640px;
+            height: 665px;
+            margin: 0; 
+        }
+
+        &__title {
+            font-size: 60px;
+        }
+
+        &__text {
+            font-size: 20px;
+            max-width: 640px;
+        }
+    }
+}
