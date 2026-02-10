@@ -25,8 +25,6 @@ export const initModal = () => {
         return;
       }
 
-      console.log(artist);
-
       renderModal(artist, modalRoot);
     } catch (error) {
       modalRoot.style.display = 'none';
@@ -48,56 +46,49 @@ const renderModal = (artist, modalRoot) => {
     <div class="modal__content" role="dialog" aria-modal="true">
 
       <div class="modal__header">
-          <button class="modal__close-btn" aria-label="Close modal">&times;</button>
-          <h2 class="modal__title">${artist.strArtist}</h2>
+        <button class="modal__close-btn" aria-label="Close modal">&times;</button>
+        <h2 class="modal__title">${artist.strArtist}</h2>
       </div>
-
 
       <div class="modal__body">
         <div class="modal__image-artist">
-          <img  class="modal__image-artist-img" src="${artist.strArtistThumb}" alt="${artist.strArtistThumb}">
+          <img class="modal__image-artist-img" src="${artist.strArtistThumb}" alt="${artist.strArtistThumb}">
         </div>
 
         <div class="modal__description">
           <div class="modal__description-grid">
-            <div class="modal__description-item">
-              <h3 class="modal__description-title ">Years active</h3>
+            <div class="modal__description-item" id="left-item">
+              <h3 class="modal__description-title">Years active</h3>
               <p class="modal__description-value">${artist.yearsActive}</p>
 
-              <h3 class="modal__description-title marg">Members</h3>
-              <p class="modal__description-value">${artist.intMembers}</p>
+              <h3 class="modal__description-title marg" id="members-title">Members</h3>
+              <p class="modal__description-value" id="members-value">${artist.intMembers}</p>
             </div>
 
-            <div class="modal__description-item ">
-            <h3 class="modal__description-title">Sex</h3>
-              <p class="modal__description-value">${artist.strGender}</p>
+            <div class="modal__description-item" id="right-item">
+              <h3 class="modal__description-title" id="sex-title">Sex</h3>
+              <p class="modal__description-value" id="sex-value">${artist.strGender}</p>
 
               <h3 class="modal__description-title marg">Country</h3>
               <p class="modal__description-value">${artist.strCountry}</p>
             </div>
           </div>
 
-            <div class="modal__description-bio">
-              <h3 class="modal__description-bio-title">Biography</h3>
-
-              <div class="modal__description-bio-scroll">
-                <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
-              </div>
+          <div class="modal__description-bio">
+            <h3 class="modal__description-bio-title">Biography</h3>
+            <div class="modal__description-bio-scroll">
+              <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
             </div>
-
+          </div>
 
           <ul class="modal__description-genres-list">
-            ${artist.genres
-              .map(
-                genre =>
-                  `<li class="modal__description-genres-item">${genre}</li>`
-              )
-              .join('')}
+            ${artist.genres.map(genre => `<li class="modal__description-genres-item">${genre}</li>`).join('')}
           </ul>
         </div>
       </div>
     </div>
   `;
+
   modalRoot.style.display = 'flex';
 };
 
