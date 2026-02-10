@@ -46,8 +46,11 @@ const renderModal = (artist, modalRoot) => {
   modalRoot.innerHTML = `
     <div class="modal__content" role="dialog" aria-modal="true">
 
-    <button class="modal__close-btn" aria-label="Close modal">&times;</button>
-      <h2 class="modal__title">${artist.strArtist}</h2>
+      <div class="modal__header">
+          <button class="modal__close-btn" aria-label="Close modal">&times;</button>
+          <h2 class="modal__title">${artist.strArtist}</h2>
+      </div>
+
 
       <div class="modal__body">
         <div class="modal__image-artist">
