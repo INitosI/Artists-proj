@@ -43,7 +43,7 @@ function createArtistCard(artist) {
           <h3 class="artists__name">${strArtist}</h3>
           <p class="artists__desc">${strBiographyEN}</p>
         </div>
-       <button class="artists__learn-more" data-id="${_id}">
+       <button class="artists__learn-more more-open" data-id="${_id}">
           Learn More <svg class="artists__learn-more-icon" width="24" height="24">
     <use href="/img/icons.svg#icon-caret-right"></use>
   </svg>

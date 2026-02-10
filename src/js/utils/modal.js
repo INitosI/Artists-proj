@@ -15,6 +15,7 @@ export const initModal = () => {
       </div>
     `;
     modalRoot.style.display = 'flex';
+    document.body.classList.add('more-open');
 
     try {
       const artist = await fetchArtistById(artistId);
@@ -63,13 +64,13 @@ const renderModal = (artist, modalRoot) => {
               <h3 class="modal__description-title ">Years active</h3>
               <p class="modal__description-value">${artist.yearsActive}</p>
 
-              <h3 class="modal__description-title marg">Sex</h3>
-              <p class="modal__description-value">${artist.strGender}</p>
+              <h3 class="modal__description-title marg">Members</h3>
+              <p class="modal__description-value">${artist.intMembers}</p>
             </div>
 
             <div class="modal__description-item ">
-              <h3 class="modal__description-title ">Members</h3>
-              <p class="modal__description-value">${artist.intMembers}</p>
+            <h3 class="modal__description-title">Sex</h3>
+              <p class="modal__description-value">${artist.strGender}</p>
 
               <h3 class="modal__description-title marg">Country</h3>
               <p class="modal__description-value">${artist.strCountry}</p>
@@ -104,4 +105,5 @@ const renderModal = (artist, modalRoot) => {
 const closeModal = modalRoot => {
   modalRoot.innerHTML = '';
   modalRoot.style.display = 'none';
+  document.body.classList.remove('more-open');
 };
