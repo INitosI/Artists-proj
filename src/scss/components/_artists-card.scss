@@ -1,0 +1,170 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+
+  &.is-open {
+    pointer-events: all;
+  }
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  &__content {
+    background: #111;
+    color: #fff;
+    width: 100%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+  }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      color: #ff3c3c;
+    }
+  }
+
+  &__header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  &__image {
+    width: 250px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+
+  &__bio {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #ccc;
+  }
+
+  &__genre {
+    font-weight: 600;
+  }
+
+  &__albums-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  &__album {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  &__album-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  &__tracks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__youtube {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .modal {
+    &__header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    
+
+    &__albums-list {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .modal {
+    &__content {
+      padding: 20px;
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__bio {
+      font-size: 13px;
+    }
+  }
+}
+
+/* Анімація */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

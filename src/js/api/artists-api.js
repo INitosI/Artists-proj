@@ -1,3 +1,23 @@
 import instance from './axios-instance';
 
-export const fetchArtists = params => instance.get('/artists', { params });
+const fetchArtists = params =>
+  instance.get('/artists', { params }).then(({ data }) => data);
+
+export const getArtistsInfo = async params => {
+  const response = await fetchArtists(params);
+  return response.artists || [];
+};
+
+export const fetchArtistById = async id => {
+  const response = await instance.get(`/artists/${id}`);
+  return response.data || null;
+};
+
+export const fetchArtistAlbums = async id => {
+  const {response } = await instance.get(`/artists/${id}/albumsList`);
+  return response.data || [];
+};
+export const fetchArtistTracks = async artistId => {
+  const response = await instance.get(`/artists/${artistId}/albumList/tracks`);
+  return response.data || [];
+}
