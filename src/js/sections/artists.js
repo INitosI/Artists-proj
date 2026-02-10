@@ -44,9 +44,9 @@ function createArtistCard(artist) {
           <p class="artists__desc">${strBiographyEN}</p>
         </div>
        <button class="artists__learn-more" data-id="${_id}">
-          Learn More <svg class="artists__learn-more-icon" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0 14L8 7L0 0V14Z" fill="white" />
-</svg>
+          Learn More <svg class="artists__learn-more-icon" width="24" height="24">
+    <use href="/img/icons.svg#icon-caret-right"></use>
+  </svg>
         </button>
       </li>
 `;
