@@ -83,10 +83,7 @@
     .artists {
       &__list {
         gap: 32px;
-      }
-
-      &__item:last-child {
-        margin-bottom: 32px;
+        margin-bottom: 64px;
       }
 
       &__img {
