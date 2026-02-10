@@ -81,6 +81,10 @@
 
   @media (min-width: 768px) {
     .artists {
+      &__list {
+        gap: 32px;
+      }
+
       &__item:last-child {
         margin-bottom: 32px;
       }
