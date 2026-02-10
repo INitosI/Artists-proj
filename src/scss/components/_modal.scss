@@ -1,3 +1,4 @@
+
 .modal {
   position: fixed;
   top: 0;
@@ -49,8 +50,6 @@
     gap: 32px;
     justify-content: center;
     max-width: 1185px;
-    // max-height: calc(90vh - 120px);
-    // overflow-y: auto;
 
     & > .modal__image-artist {
       max-width: 575px;
@@ -179,15 +178,12 @@
   }
 
   .modal__title {
-    font-size: 32px;
-    margin-top: 64px;
     max-width: 655px;
   }
 
   .modal__body {
-    gap: 24px;
+    margin-top: 32px;
     max-width: 100%;
-    // flex-wrap: wrap;
     flex-direction: column;
   }
 
@@ -199,7 +195,7 @@
 
   .modal__description {
     gap: 20px;
-    width: 100%;
+    max-width: 100%;
   }
 
   .modal__image-artist-img {
@@ -224,9 +220,13 @@
 
 @media (max-width:320px) {
   .modal__content {
-    padding: 16px;
-    max-width: 288px;
     padding: 8px;
+    max-width: 288px;
+  }
+
+  .modal__body .modal__description-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .modal__close-btn {
@@ -243,17 +243,19 @@
 
   .modal__body {
     gap: 16px;
-    max-width: 100%;
+    max-width: 100%;  
     flex-direction: column;
   }
 
-  .modal__description-bio-scroll {
-    max-height: 320px;
-  }
 
   .modal__image-artist {
     max-width: 100% !important;
-    max-height: 200px !important;
+    max-height: 167px !important;
     overflow: hidden;
+  }
+
+  .modal__body .modal__description-bio {
+    height: 324px;
+    overflow-y: auto;
   }
 }
