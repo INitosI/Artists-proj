@@ -8,7 +8,6 @@
   display: none;
   justify-content: center;
   align-items: center;
-  position: fixed;
 
   &__content {
     position: relative;
@@ -16,7 +15,6 @@
     padding: 64px;
     border-radius: 8px;
     max-width: 1312px;
-    max-width: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -24,11 +22,11 @@
 
   &__close-btn {
     position: absolute;
-    top: 10px;
+    top: 16px;
     right: 16px;
     background: none;
     border: none;
-    font-size: 28px;
+    font-size: 32px;
     cursor: pointer;
     color: #fff;
   }
@@ -50,30 +48,30 @@
     display: flex;
     gap: 32px;
     justify-content: center;
-    min-width: 1185px;  
-    max-height: calc(90vh - 120px);
-    overflow-y: auto;
+    max-width: 1185px;
+    // max-height: calc(90vh - 120px);
+    // overflow-y: auto;
 
     & > .modal__image-artist {
       max-width: 575px;
       max-height: 355px;
-      background-color: #ddd;
-      object-fit: cover;
-      border-radius: 8px;
+      overflow: hidden;
+      border-radius: 16px;
       flex-shrink: 0;
     }
 
     .modal__image-artist-img {
       width: 100%;
+      height: 100%;
       object-fit: cover;
       border-radius: 8px;
     }
 
     .modal__description {
-      flex: 1;
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 24px;
+      width: 100%;
 
 
       &-grid {
@@ -85,8 +83,9 @@
 
       &-bio {
         max-width: 576px;
-      //   max-height: 162px;
-      //  overflow-y: auto;
+        max-height: 162px;
+       overflow-y: auto;
+       scrollbar-width: none;
       }
     }
 
@@ -96,6 +95,7 @@
       font-size: 18px;
       line-height: 1.5;
       color: #fff;
+      overflow: hidden;
     }
 
     .modal__description-bio-text {
@@ -111,6 +111,7 @@
       display: flex;
       flex-direction: column;
       max-width: 150px;
+    
 
       .modal__description-title {
         font-size: 16px;
@@ -141,10 +142,118 @@
   list-style: none;
  }
 
+.modal__description-bio-scroll {
+  max-height: 162px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.modal__description-bio-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+
   .modal__description-genres-item {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 6px;
     padding: 4px 10px;
   }
   }
-} 
+
+  .marg {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal__content {
+    padding: 24px;
+    max-width: 700px;
+    overflow-y: auto;
+    max-height: 90vh;
+  }
+
+  .modal__close-btn {
+    font-size: 32px;
+    right: 47px;
+  }
+
+  .modal__title {
+    font-size: 32px;
+    margin-top: 64px;
+    max-width: 655px;
+  }
+
+  .modal__body {
+    gap: 24px;
+    max-width: 100%;
+    // flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .modal__image-artist {
+    max-width: 655px !important;
+    max-height: 400px !important;
+    overflow: hidden;
+  }
+
+  .modal__description {
+    gap: 20px;
+    width: 100%;
+  }
+
+  .modal__image-artist-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  .modal__description-grid {
+    gap: 24px;
+  }
+
+  .modal__description-bio {
+    max-width: 100%;
+  }
+
+  .modal__description-bio-text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width:320px) {
+  .modal__content {
+    padding: 16px;
+    max-width: 288px;
+    padding: 8px;
+  }
+
+  .modal__close-btn {
+    font-size: 32px;
+    right: 16px;
+    top: 16px;
+  }
+
+  .modal__title {
+    font-size: 20px;
+    margin-top: 32px;
+    max-width: 272px;
+  }
+
+  .modal__body {
+    gap: 16px;
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .modal__description-bio-scroll {
+    max-height: 320px;
+  }
+
+  .modal__image-artist {
+    max-width: 100% !important;
+    max-height: 200px !important;
+    overflow: hidden;
+  }
+}

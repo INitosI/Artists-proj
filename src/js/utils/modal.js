@@ -57,27 +57,30 @@ const renderModal = (artist, modalRoot) => {
         <div class="modal__description">
           <div class="modal__description-grid">
             <div class="modal__description-item">
-              <h3 class="modal__description-title">Years active</h3>
+              <h3 class="modal__description-title ">Years active</h3>
               <p class="modal__description-value">${artist.yearsActive}</p>
-            </div>
-            <div class="modal__description-item">
-              <h3 class="modal__description-title">Sex</h3>
+
+              <h3 class="modal__description-title marg">Sex</h3>
               <p class="modal__description-value">${artist.strGender}</p>
             </div>
-            <div class="modal__description-item">
-              <h3 class="modal__description-title">Members</h3>
+
+            <div class="modal__description-item ">
+              <h3 class="modal__description-title ">Members</h3>
               <p class="modal__description-value">${artist.intMembers}</p>
-            </div>
-            <div class="modal__description-item">
-              <h3 class="modal__description-title">Country</h3>
+
+              <h3 class="modal__description-title marg">Country</h3>
               <p class="modal__description-value">${artist.strCountry}</p>
             </div>
           </div>
 
-          <div class="modal__description-bio">
-            <h3 class="modal__description-bio-title">Biography</h3>
-            <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
-          </div>
+            <div class="modal__description-bio">
+              <h3 class="modal__description-bio-title">Biography</h3>
+
+              <div class="modal__description-bio-scroll">
+                <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
+              </div>
+            </div>
+
 
           <ul class="modal__description-genres-list">
             ${artist.genres
