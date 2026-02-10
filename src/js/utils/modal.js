@@ -98,7 +98,6 @@ const renderModal = (artist, modalRoot) => {
       </div>
     </div>
   `;
-
   modalRoot.style.display = 'flex';
 };
 

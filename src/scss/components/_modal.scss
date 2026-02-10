@@ -8,15 +8,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #1E1C1F;
+  background-color: rgba(30, 28, 31, 0.5);
   display: none;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 
   &__content {
     position: relative;
     background-color: #060307;
-    padding: 64px;
+    padding: 0 64px;
     border-radius: 8px;
     max-width: 1312px;
     display: flex;
@@ -62,11 +63,10 @@
     justify-items: center;
     max-width: 1185px;
 
-    & > .modal__image-artist {
-      max-width: 575px;
+   .modal__image-artist {
+      max-width: 575px ;
       max-height: 355px;
       overflow: hidden;
-      border-radius: 16px;
       flex-shrink: 0;
     }
 
@@ -74,14 +74,14 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 16px;
     }
 
     .modal__description {
       display: flex;
       flex-wrap: wrap;
       gap: 24px;
-      width: 100%;
+      max-width: 575px;
 
 
       &-grid {
