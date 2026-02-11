@@ -182,6 +182,10 @@
 }
 
 @media (max-width: 768px) {
+  .modal__artist-info {
+    flex-direction: column;
+    max-width: 272px;
+  }
   .modal__content {
     padding: 24px;
     max-width: 700px;
@@ -215,6 +219,7 @@
 
   .modal__image-artist-img {
     width: 100%;
+    max-width: 272px;
     height: 100%;
     object-fit: cover;
     border-radius: 16px;

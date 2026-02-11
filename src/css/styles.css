@@ -299,7 +299,7 @@ main {
 
 @media (min-width: 768px) {
   .modal__albums-list {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 32px;
   }
 }
@@ -394,6 +394,12 @@ main {
 }
 .album-card__link:hover svg {
   opacity: 1;
+}
+
+.album-card__link-placeholder {
+  display: block;
+  width: 20px;
+  height: 20px;
 }
 
 .loader {
@@ -642,6 +648,13 @@ main {
 }
 
 @media (max-width: 768px) {
+  .modal__artist-info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    max-width: 272px;
+  }
   .modal__content {
     padding: 24px;
     max-width: 700px;
@@ -672,6 +685,7 @@ main {
   }
   .modal__image-artist-img {
     width: 100%;
+    max-width: 272px;
     height: 100%;
     -o-object-fit: cover;
        object-fit: cover;

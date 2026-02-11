@@ -145,8 +145,8 @@ const createAlbumCard = album => {
                 <span>${minutes}:${seconds}</span>
                 ${
                   track.movie && track.movie !== 'null'
-                    ? `<a href="${track.movie}" target="_blank" rel="noopener noreferrer" class="album-card__link"><svg class="icon icon-Youtube"><use xlink:href="#icon-Youtube"></use></svg></a>`
-                    : ''
+                    ? `<a href="${track.movie}" target="_blank" rel="noopener noreferrer" class="album-card__link"><svg class="icon icon-Youtube"><use xlink:href="/img/icons.svg#icon-Youtube"></use></svg></a>`
+                    : '<span class="album-card__link-placeholder"></span>'
                 }
               </div>
             `;

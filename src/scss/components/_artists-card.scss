@@ -122,7 +122,7 @@
 }
 @media (min-width: 768px) {
   .modal__albums-list {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 32px;
   }
 }
@@ -198,6 +198,12 @@
   &:hover svg {
     opacity: 1;
   }
+}
+
+.album-card__link-placeholder {
+  display: block;
+  width: 20px;
+  height: 20px;
 }
 
 // //
