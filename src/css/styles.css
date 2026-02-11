@@ -610,6 +610,7 @@ main {
 .modal__body .modal__description-bio-text {
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 400;
+  margin-bottom: 24px;
   font-size: 18px;
   line-height: 1.5;
   color: #fff;
