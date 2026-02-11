@@ -13,7 +13,12 @@ export const fetchArtistById = async id => {
   return response.data || null;
 };
 
-export const fetchArtistAlbums = async artistId => {
-  const response = await instance.get(`/artists/${artistId}/albums`);
-  return response.data || [];
-}
+// export const fetchArtistAlbums = async id => {
+//   const response = await instance.get(`/artists/${artistId}/albums`);
+//   return response.data || [];
+// }
+export const fetchArtistAlbums = async id => {
+  const { data } = await instance.get(`/artists/${id}/albums`);
+
+  return data.albumsList || data || [];
+};

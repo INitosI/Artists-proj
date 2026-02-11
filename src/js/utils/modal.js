@@ -2,8 +2,8 @@ import { fetchArtistById, fetchArtistAlbums } from '../api/artists-api.js';
 
 export const initModal = () => {
   const modalRoot = document.getElementById('modal-root');
-const btn = document.querySelector('.artists__learn-more');
-  btn.addEventListener('click', async event => {
+
+  document.addEventListener('click', async event => {
     const trigger = event.target.closest('[data-id]');
     if (!trigger) return;
 
@@ -47,7 +47,7 @@ const btn = document.querySelector('.artists__learn-more');
   });
 };
 
-const renderModal = (artist, modalRoot) => {
+const renderModal = (artist,albums,  modalRoot) => {
   modalRoot.innerHTML = `
     <div class="modal__content" role="dialog" aria-modal="true">
 
@@ -87,7 +87,7 @@ const renderModal = (artist, modalRoot) => {
               <div class="modal__description-bio-scroll">
                 <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
               </div>
-            </div>
+           
 
 
           <ul class="modal__description-genres-list">
@@ -100,7 +100,7 @@ const renderModal = (artist, modalRoot) => {
           </ul>
         </div>
       </div>
-      ${renderAlbums(artist.albums)}
+      ${renderAlbums(albums)}
     </div>
   `;
   modalRoot.style.display = 'flex';
@@ -121,17 +121,16 @@ const renderModal = (artist, modalRoot) => {
 
 const createAlbumCard = album => {
   return `
-    <ul class="modal__album-card">
-    <h4 class="modal__albums-card-title"
-    ></h4>
-      <h4 class="album-card__title">${album.strAlbum}</h4>
+    <div class="modal__album-card">
+    
+      <h4 class="album-card__tracks-card-title">${album.strAlbum}</h4>
 
-      <div class="album-card__header">
+      <div class="album-card__track-lesheader">
         <span>Track</span>
         <span>Time</span>
         <span>Link</span>
       </div>
-      <div class="modal__albums-tracks">
+      <div class="modal__albums-tracks-list">
         ${album.tracks
           .map(track => {
             const minutes = Math.floor(track.intDuration / 60000);
@@ -140,7 +139,7 @@ const createAlbumCard = album => {
             ).toString().padStart(2, '0');
 
             return `
-              <li class="album-card__track">
+              <div class="album-card__track">
                 <span>${track.strTrack}</span>
                 <span>${minutes}:${seconds}</span>
                 ${
@@ -148,12 +147,13 @@ const createAlbumCard = album => {
                     ? `<a href="${track.movie}" target="_blank" rel="noopener noreferrer" class="album-card__link"><svg class="icon icon-Vector"><use xlink:href="#icon-Vector"></use></svg></a>`
                     : ''
                 }
-              </li>
+              </div>
             `;
           })
           .join('')}
-      </ul>
+      </div>
     </div>
+    
   `;
 };
 
