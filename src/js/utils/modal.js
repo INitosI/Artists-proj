@@ -1,4 +1,5 @@
 import { fetchArtistById, fetchArtistAlbums } from '../api/artists-api.js';
+import iconsUrl from '../../img/icons.svg?url';
 
 export const initModal = () => {
   const modalRoot = document.getElementById('modal-root');
@@ -144,7 +145,7 @@ const createAlbumCard = album => {
               track.movie
                 ? `<a class="album-card__link" href="${track.movie}" target="_blank" rel="noopener noreferrer">
                    <svg width="20" height="20">
-                     <use href="/img/icons.svg#icon-Youtube"></use>
+                     <use href="${iconsUrl}#icon-Youtube"></use>
                    </svg>
                  </a>`
                 : `<span class="album-card__link-placeholder"></span>`
