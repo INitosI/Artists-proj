@@ -87,8 +87,7 @@ const renderModal = (artist, albums, modalRoot) => {
                 <div class="modal__description-bio-scroll">
                   <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
                 </div>
-             
-  
+              </div>
   
             <ul class="modal__description-genres-list">
               ${artist.genres
