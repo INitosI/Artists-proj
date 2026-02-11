@@ -62,17 +62,19 @@ import{i as E,a as S,R as q,S as x,N as T,P as B}from"./assets/vendor-CEL2a_m2.j
                 <p class="modal__description-value">${e.strCountry}</p>
               </div>
     
-              <div class="modal__description-bio">
-                <h3 class="modal__description-bio-title">Biography</h3>
-    
-                <div class="modal__description-bio-scroll">
-                  <p class="modal__description-bio-text">${e.strBiographyEN}</p>
+             <div class="modal__description-item-column">
+                <div class="modal__description-bio">
+                  <h3 class="modal__description-bio-title">Biography</h3>
+      
+                  <div class="modal__description-bio-scroll">
+                    <p class="modal__description-bio-text">${e.strBiographyEN}</p>
+                  </div>
                 </div>
-              </div>
-    
-              <ul class="modal__description-genres-list">
-                ${e.genres.map(i=>`<li class="modal__description-genres-item">${i}</li>`).join("")}
-              </ul>
+      
+                <ul class="modal__description-genres-list">
+                  ${e.genres.map(i=>`<li class="modal__description-genres-item">${i}</li>`).join("")}
+                </ul>
+             </div>
             </div>
           </div>
         </div>
