@@ -113,3 +113,202 @@
     }
   }
 }
+.modal__albums {
+  margin-top: 48px;
+}
+
+.modal__albums-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 768px) {
+  .modal__albums-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+@media (min-width: 1440px) {
+  .modal__albums-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+}
+.modal__album-card {
+  padding: 14px 11px;
+  background: #1e1c1f;
+  border-radius: 16px;
+}
+.album-card__tracks-card-title {
+  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+.album-card__track-lesheader {
+  display: grid;
+  grid-template-columns: 1fr 60px 40px;
+  padding: 0 12px;
+  // margin-bottom: 12px;
+  font-size: 12px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  background-color: #ffffff0d;
+  border-radius: 8px;
+}
+.modal__albums-tracks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.album-card__track {
+  display: grid;
+  grid-template-columns: 1fr 60px 40px;
+  align-items: center;
+  padding: 14px 11px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #fff;
+}
+.album-card__track:nth-child(odd) {
+  background: none;
+}
+.album-card__track:nth-child(even) {
+  background: rgba(255, 255, 255, 0.12);
+}
+.album-card__track span:last-child {
+  text-align: center;
+}
+.album-card__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 8px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+    opacity: 0.7;
+    transition: 0.3s;
+  }
+
+  &:hover svg {
+    opacity: 1;
+  }
+}
+
+.album-card__link-placeholder {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+// //
+//   .album-card {
+//     padding: 14px 11px;
+//     background: #140f16;
+//     border-radius: 16px;
+//     min-width: 272px;
+//   }
+
+//   .album-card__tracks {
+//     margin-top: 48px;
+
+//     &-title {
+//       font-weight: 600;
+//       font-size: 16px;
+//       line-height: 1.5;
+//       color: #fff;
+//       margin-bottom: 32px;
+//     }
+
+//     &-list {
+//       display: grid;
+//       gap: 24px;
+//     }
+
+//     &-card {
+//       background: #140f16;
+//       border-radius: 16px;
+//       padding: 24px;
+//     }
+
+//     &-card-title {
+
+//       font-weight: 700;
+//       font-size: 24px;
+//       letter-spacing: -0.01em;
+//       line-height: 1.3;
+//       color: #fff;
+//       margin-bottom: 32px;
+//     }
+
+//     &-tracks {
+//       display: flex;
+//       flex-direction: column;
+//       gap: 8px;
+//     }
+
+//     &-track {
+//       display: grid;
+//       grid-template-columns: 1fr 60px 32px;
+//       align-items: center;
+//       padding: 8px 12px;
+//       border-radius: 8px;
+//       background: rgba(255, 255, 255, 0.05);
+//       font-size: 14px;
+//       color: #fff;
+//     }
+
+//     &-track-time {
+//       text-align: center;
+//       opacity: 0.7;
+//     }
+
+//     &-track-link {
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+
+//       svg {
+//         fill: #fff;
+//         opacity: 0.7;
+//         transition: 0.3s;
+//       }
+
+//       &:hover svg {
+//         cursor: pointer;
+//         opacity: 1;
+//       }
+//     }
+//   }
+//   @media (min-width: 768px) {
+//   .modal__albums {
+//     &-list {
+//       grid-template-columns: repeat(2, 1fr);
+//       gap: 32px;
+//     }
+
+//     &-title {
+//       font-size: 36px;
+//     }
+//   }
+// }
+// @media (min-width: 1440px) {
+//   .modal__albums {
+//     margin-top: 80px;
+
+//     &-title {
+//       font-size: 44px;
+//     }
+
+//     &-list {
+//       gap: 40px;
+//     }
+//   }
+// }

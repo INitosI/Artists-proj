@@ -1,4 +1,4 @@
-import { fetchArtistById } from '../api/artists-api.js';
+import { fetchArtistById, fetchArtistAlbums } from '../api/artists-api.js';
 
 export const initModal = () => {
   const modalRoot = document.getElementById('modal-root');
@@ -18,7 +18,10 @@ export const initModal = () => {
     document.body.classList.add('more-open');
 
     try {
-      const artist = await fetchArtistById(artistId);
+      const [artist, albums] = await Promise.all([
+        fetchArtistById(artistId),
+        fetchArtistAlbums(artistId),
+      ]);
 
       if (!artist) {
         modalRoot.style.display = 'none';
@@ -41,7 +44,7 @@ export const initModal = () => {
   });
 };
 
-const renderModal = (artist, modalRoot) => {
+const renderModal = (artist, albums, modalRoot) => {
   modalRoot.innerHTML = `
     <div class="modal__content" role="dialog" aria-modal="true">
 
@@ -72,7 +75,32 @@ const renderModal = (artist, modalRoot) => {
               <h3 class="modal__description-title marg">Country</h3>
               <p class="modal__description-value">${artist.strCountry}</p>
             </div>
+  
+              <div class="modal__description-bio">
+                <h3 class="modal__description-bio-title">Biography</h3>
+  
+                <div class="modal__description-bio-scroll">
+                  <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
+                </div>
+             
+  
+  
+            <ul class="modal__description-genres-list">
+              ${artist.genres
+                .map(
+                  genre =>
+                    `<li class="modal__description-genres-item">${genre}</li>`
+                )
+                .join('')}
+            </ul>
           </div>
+        </div>
+      </div>
+      ${renderAlbums(albums)}
+    </div>
+  `;
+  modalRoot.style.display = 'grid';
+};
 
           <div class="modal__description-bio">
             <h3 class="modal__description-bio-title">Biography</h3>
@@ -87,6 +115,7 @@ const renderModal = (artist, modalRoot) => {
         </div>
       </div>
     </div>
+    
   `;
 
   modalRoot.style.display = 'flex';

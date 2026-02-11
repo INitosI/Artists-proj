@@ -3,6 +3,7 @@
 }
 
 .modal {
+  padding: 16px;
   position: fixed;
   top: 0;
   left: 0;
@@ -14,15 +15,20 @@
   align-items: center;
   z-index: 1000;
 
+  &__artist-info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+  }
   &__content {
     position: relative;
     background-color: #060307;
     padding: 0 64px;
     border-radius: 16px;
     max-width: 1312px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   &__close-btn {
@@ -36,7 +42,7 @@
     color: #fff;
   }
 
-  .modal__header {
+  &__header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,7 +50,7 @@
   }
 
   &__title {
-    font-family: "Epilogue", sans-serif;
+    font-family: 'Epilogue', sans-serif;
     margin-top: 64px;
     font-weight: 700;
     font-size: 32px;
@@ -56,8 +62,11 @@
   }
 
   &__body {
+    max-width: 100%;
+    align-items: flex-start;
+
     margin: 48px 0;
-    display: flex;
+    display: grid;
     gap: 32px;
     justify-content: center;
     justify-items: center;
@@ -84,7 +93,6 @@
       gap: 24px;
       max-width: 575px;
 
-
       &-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -101,7 +109,7 @@
     }
 
     .modal__description-bio-title {
-      font-family: "IBM Plex Sans", sans-serif;
+      font-family: 'IBM Plex Sans', sans-serif;
       font-weight: 600;
       font-size: 18px;
       line-height: 1.5;
@@ -110,7 +118,7 @@
     }
 
     .modal__description-bio-text {
-      font-family: "IBM Plex Sans", sans-serif;
+      font-family: 'IBM Plex Sans', sans-serif;
       font-weight: 400;
       font-size: 18px;
       line-height: 1.5;
@@ -122,49 +130,46 @@
       display: flex;
       flex-direction: column;
       max-width: 150px;
-    
-
-      .modal__description-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: #fff;
-        margin-bottom: 4px;
-        position: relative;
-        max-width: 145px;
-
-      }
-
-      .modal__description-value {
-        font-size: 16px;
-        color: #fff;
-      }
-
-      .modal__description-genres{
-        background: #fff;
-      }
     }
 
-  .modal__description-genres-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
- }
+    .modal__description-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+      position: relative;
+      max-width: 145px;
+    }
 
-.modal__description-bio-scroll {
-  max-height: 162px;
-  overflow-y: auto;
-  scrollbar-width: none;
-}
+    .modal__description-value {
+      font-size: 16px;
+      color: #fff;
+    }
 
+    // .modal__description-genres {
+    //   background: #fff;
+    // } // не используется
 
-  .modal__description-genres-item {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
-    padding: 4px 10px;
-  }
+    .modal__description-genres-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    // .modal__description-bio-scroll {
+    //   max-height: 162px;
+    //   overflow-y: auto;
+    //   scrollbar-width: none;
+    // } // повторяется Строки 95-100
+
+    .modal__description-genres-item {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      padding: 4px 10px;
+    }
   }
 
   .marg {
@@ -173,11 +178,13 @@
 }
 
 @media (max-width: 768px) {
+  .modal__artist-info {
+    flex-direction: column;
+    max-width: 272px;
+  }
   .modal__content {
     padding: 24px;
     max-width: 700px;
-    overflow-y: auto;
-    max-height: 90vh;
   }
 
   .modal__close-btn {
@@ -208,6 +215,7 @@
 
   .modal__image-artist-img {
     width: 100%;
+    max-width: 272px;
     height: 100%;
     object-fit: cover;
     border-radius: 16px;
@@ -226,10 +234,10 @@
   }
 }
 
-@media (max-width:320px) {
+@media (max-width: 320px) {
   .modal__content {
-    padding: 8px;
-    max-width: 288px;
+    padding: 16px;
+    max-width: 100%;
   }
 
   .modal__body .modal__description-grid {
@@ -254,7 +262,6 @@
     max-width: 100%;  
     flex-wrap: wrap;
   }
-
 
   .modal__image-artist {
     max-width: 100% !important;
