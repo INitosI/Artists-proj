@@ -2,8 +2,8 @@ import { fetchArtistById, fetchArtistAlbums } from '../api/artists-api.js';
 
 export const initModal = () => {
   const modalRoot = document.getElementById('modal-root');
-
-  document.addEventListener('click', async event => {
+const btn = document.querySelector('.artists__learn-more');
+  btn.addEventListener('click', async event => {
     const trigger = event.target.closest('[data-id]');
     if (!trigger) return;
 
