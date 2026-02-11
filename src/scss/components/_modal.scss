@@ -72,8 +72,8 @@
     justify-items: center;
     max-width: 1185px;
 
-   .modal__image-artist {
-      width: 575px ;
+    .modal__image-artist {
+      width: 575px;
       height: 355px;
       overflow: hidden;
       flex-shrink: 0;
@@ -103,8 +103,8 @@
       &-bio {
         max-width: 576px;
         height: 162px;
-       overflow-y: auto;
-       scrollbar-width: none;
+        overflow-y: auto;
+        scrollbar-width: none;
       }
     }
 
@@ -259,7 +259,7 @@
 
   .modal__body {
     gap: 16px;
-    max-width: 100%;  
+    max-width: 100%;
     flex-wrap: wrap;
   }
 
@@ -270,7 +270,6 @@
 
   .modal__description-bio {
     width: 100%;
-   overflow-y: auto;
-   }
+    overflow-y: auto;
   }
-
+}
