@@ -1,4 +1,4 @@
-import { fetchArtistById } from '../api/artists-api.js';
+import { fetchArtistById, fetchArtistAlbums } from '../api/artists-api.js';
 
 export const initModal = () => {
   const modalRoot = document.getElementById('modal-root');
@@ -18,7 +18,11 @@ export const initModal = () => {
     document.body.classList.add('more-open');
 
     try {
-      const artist = await fetchArtistById(artistId);
+     const [artist, albums] = await Promise.all([
+  fetchArtistById(artistId),
+  fetchArtistAlbums(artistId),
+]);
+      
 
       if (!artist) {
         modalRoot.style.display = 'none';
@@ -27,7 +31,7 @@ export const initModal = () => {
 
       console.log(artist);
 
-      renderModal(artist, modalRoot);
+      renderModal(artist,albums, modalRoot);
     } catch (error) {
       modalRoot.style.display = 'none';
     }
@@ -96,10 +100,63 @@ const renderModal = (artist, modalRoot) => {
           </ul>
         </div>
       </div>
+      ${renderAlbums(artist.albums)}
     </div>
   `;
   modalRoot.style.display = 'flex';
 };
+  
+  const renderAlbums = albums => {
+  if (!albums || !albums.length) return '';
+
+  return `
+    <div class="modal__albums">
+      <h3 class="modal__albums-title">Albums</h3>
+      <div class="modal__albums-list">
+        ${albums.map(createAlbumCard).join('')}
+      </div>
+    </div>
+  `;
+};
+
+const createAlbumCard = album => {
+  return `
+    <ul class="modal__album-card">
+    <h4 class="modal__albums-card-title"
+    ></h4>
+      <h4 class="album-card__title">${album.strAlbum}</h4>
+
+      <div class="album-card__header">
+        <span>Track</span>
+        <span>Time</span>
+        <span>Link</span>
+      </div>
+      <div class="modal__albums-tracks">
+        ${album.tracks
+          .map(track => {
+            const minutes = Math.floor(track.intDuration / 60000);
+            const seconds = Math.floor(
+              (track.intDuration % 60000) / 1000
+            ).toString().padStart(2, '0');
+
+            return `
+              <li class="album-card__track">
+                <span>${track.strTrack}</span>
+                <span>${minutes}:${seconds}</span>
+                ${
+                  track.movie && track.movie !== 'null'
+                    ? `<a href="${track.movie}" target="_blank" rel="noopener noreferrer" class="album-card__link"><svg class="icon icon-Vector"><use xlink:href="#icon-Vector"></use></svg></a>`
+                    : ''
+                }
+              </li>
+            `;
+          })
+          .join('')}
+      </ul>
+    </div>
+  `;
+};
+
 
 const closeModal = modalRoot => {
   modalRoot.innerHTML = '';
