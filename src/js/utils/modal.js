@@ -124,7 +124,7 @@ const renderAlbums = albums => {
 
 const createAlbumCard = album => {
   const tracks = album.tracks || [];
-  
+
   return `
     <div class="modal__album-card">
       <div class="album-card__header">
@@ -132,20 +132,25 @@ const createAlbumCard = album => {
         <span class="album-card__year">${album.intYearReleased || 'N/A'}</span>
       </div>
       <div class="album-card__tracks">
-        ${tracks.map(track => `
+        ${tracks
+          .map(
+            track => `
           <div class="album-card__track">
             <span class="album-card__track-name">${track.strTrack}</span>
             <span class="album-card__track-time">${formatDuration(track.intDuration)}</span>
-            ${track.movie 
-              ? `<a class="album-card__link" href="${track.movie}" target="_blank" rel="noopener noreferrer">
+            ${
+              track.movie
+                ? `<a class="album-card__link" href="${track.movie}" target="_blank" rel="noopener noreferrer">
                    <svg width="20" height="20">
                      <use href="/img/icons.svg#icon-Youtube"></use>
                    </svg>
                  </a>`
-              : `<span class="album-card__link-placeholder"></span>`
+                : `<span class="album-card__link-placeholder"></span>`
             }
           </div>
-        `).join('')}
+        `
+          )
+          .join('')}
       </div>
     </div>
   `;
