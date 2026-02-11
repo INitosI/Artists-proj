@@ -1,3 +1,4 @@
+import iconArrow from '../../img/icon-right-arrow.png';
 import { getArtistsInfo } from '../api/artists-api';
 const list = document.querySelector('.artists__list');
 
@@ -43,10 +44,8 @@ function createArtistCard(artist) {
           <h3 class="artists__name">${strArtist}</h3>
           <p class="artists__desc">${strBiographyEN}</p>
         </div>
-       <button class="artists__learn-more more-open" data-id="${_id}">
-          Learn More <svg class="artists__learn-more-icon" width="24" height="24">
-    <use href="/img/icons.svg#icon-caret-right"></use>
-  </svg>
+       <button class="artists__learn-more" data-id="${_id}">
+          Learn More <img class="artists__learn-more-icon" src="${iconArrow}" width="8" height="14" alt="icon right arrow"></img>
         </button>
       </li>
 `;
