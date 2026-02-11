@@ -481,6 +481,15 @@ main {
           align-items: center;
   z-index: 1000;
 }
+.modal__description-item-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
 .modal__artist-info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -500,6 +509,8 @@ main {
   padding: 0 64px;
   border-radius: 16px;
   max-width: 1312px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
   display: grid;
   grid-template-columns: 1fr;
 }
@@ -630,6 +641,10 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 16px;

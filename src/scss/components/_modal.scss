@@ -15,6 +15,11 @@
   align-items: center;
   z-index: 1000;
 
+  &__description-item-column {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__artist-info {
     display: flex;
     flex-direction: row;
@@ -27,6 +32,8 @@
     padding: 0 64px;
     border-radius: 16px;
     max-width: 1312px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
     display: grid;
     grid-template-columns: 1fr;
   }
@@ -152,6 +159,7 @@
 
     .modal__description-genres-list {
       display: flex;
+      flex-direction: row;
       flex-wrap: wrap;
       gap: 16px;
       padding: 0;
