@@ -110,8 +110,6 @@
       }
     }
   }
-
-
 }
 .modal__albums {
   margin-top: 48px;
@@ -119,88 +117,88 @@
 
 .modal__albums-list {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 @media (min-width: 768px) {
   .modal__albums-list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
   }
 }
 @media (min-width: 1440px) {
   .modal__albums-list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px;
   }
 }
-.album-card {
-  padding: 20px;
-  background: #140f16;
+.modal__album-card {
+  padding: 14px 11px;
+  background: #1e1c1f;
   border-radius: 16px;
 }
 .album-card__tracks-card-title {
-  font-weight: 700;
-  font-size: 24px;
-  color: #fff;
-  margin-bottom: 20px;
+  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 24px;
 }
-.album-card__tracks-header {
+.album-card__track-lesheader {
   display: grid;
   grid-template-columns: 1fr 60px 40px;
   padding: 0 12px;
-  margin-bottom: 8px;
-
+  // margin-bottom: 12px;
   font-size: 12px;
-  opacity: .6;
+  color: #ffffff;
   text-transform: uppercase;
+  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  background-color: #ffffff0d;
+  border-radius: 8px;
 }
-.album-card__tracks-list {
+.modal__albums-tracks-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0;
 }
-.album-card__tracks-track {
+.album-card__track {
   display: grid;
   grid-template-columns: 1fr 60px 40px;
   align-items: center;
-  padding: 10px 12px;
+  padding: 14px 11px;
   border-radius: 8px;
   font-size: 14px;
   color: #fff;
 }
-.album-card__tracks-track:nth-child(odd) {
-  background: rgba(255,255,255,0.06);
+.album-card__track:nth-child(odd) {
+  background: none;
 }
-
-.album-card__tracks-track:nth-child(even) {
-  background: rgba(255,255,255,0.12);
+.album-card__track:nth-child(even) {
+  background: rgba(255, 255, 255, 0.12);
 }
-Час
-.album-card__tracks-track-time {
+.album-card__track span:last-child {
   text-align: center;
-  opacity: .75;
 }
-.album-card__tracks-track-link {
+.album-card__link {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  border-radius: 8px;
 
   svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     fill: #fff;
-    opacity: .7;
-    transition: .2s;
+    opacity: 0.7;
+    transition: 0.3s;
   }
 
   &:hover svg {
     opacity: 1;
-    transform: scale(1.15);
   }
 }
-
-
-
 
 // //
 //   .album-card {
@@ -212,7 +210,7 @@
 
 //   .album-card__tracks {
 //     margin-top: 48px;
-   
+
 //     &-title {
 //       font-weight: 600;
 //       font-size: 16px;

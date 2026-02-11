@@ -18,11 +18,10 @@ export const initModal = () => {
     document.body.classList.add('more-open');
 
     try {
-     const [artist, albums] = await Promise.all([
-  fetchArtistById(artistId),
-  fetchArtistAlbums(artistId),
-]);
-      
+      const [artist, albums] = await Promise.all([
+        fetchArtistById(artistId),
+        fetchArtistAlbums(artistId),
+      ]);
 
       if (!artist) {
         modalRoot.style.display = 'none';
@@ -31,7 +30,7 @@ export const initModal = () => {
 
       console.log(artist);
 
-      renderModal(artist,albums, modalRoot);
+      renderModal(artist, albums, modalRoot);
     } catch (error) {
       modalRoot.style.display = 'none';
     }
@@ -47,7 +46,7 @@ export const initModal = () => {
   });
 };
 
-const renderModal = (artist,albums,  modalRoot) => {
+const renderModal = (artist, albums, modalRoot) => {
   modalRoot.innerHTML = `
     <div class="modal__content" role="dialog" aria-modal="true">
 
@@ -58,55 +57,57 @@ const renderModal = (artist,albums,  modalRoot) => {
 
 
       <div class="modal__body">
-        <div class="modal__image-artist">
-          <img  class="modal__image-artist-img" src="${artist.strArtistThumb}" alt="${artist.strArtistThumb}">
-        </div>
-
-        <div class="modal__description">
-          <div class="modal__description-grid">
-            <div class="modal__description-item">
-              <h3 class="modal__description-title ">Years active</h3>
-              <p class="modal__description-value">${artist.yearsActive}</p>
-
-              <h3 class="modal__description-title marg">Members</h3>
-              <p class="modal__description-value">${artist.intMembers}</p>
-            </div>
-
-            <div class="modal__description-item ">
-            <h3 class="modal__description-title">Sex</h3>
-              <p class="modal__description-value">${artist.strGender}</p>
-
-              <h3 class="modal__description-title marg">Country</h3>
-              <p class="modal__description-value">${artist.strCountry}</p>
-            </div>
+        <div class="modal__artist-info">
+          <div class="modal__image-artist">
+            <img  class="modal__image-artist-img" src="${artist.strArtistThumb}" alt="${artist.strArtistThumb}">
           </div>
-
-            <div class="modal__description-bio">
-              <h3 class="modal__description-bio-title">Biography</h3>
-
-              <div class="modal__description-bio-scroll">
-                <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
+  
+          <div class="modal__description">
+            <div class="modal__description-grid">
+              <div class="modal__description-item">
+                <h3 class="modal__description-title ">Years active</h3>
+                <p class="modal__description-value">${artist.yearsActive}</p>
+  
+                <h3 class="modal__description-title marg">Members</h3>
+                <p class="modal__description-value">${artist.intMembers}</p>
               </div>
-           
-
-
-          <ul class="modal__description-genres-list">
-            ${artist.genres
-              .map(
-                genre =>
-                  `<li class="modal__description-genres-item">${genre}</li>`
-              )
-              .join('')}
-          </ul>
+  
+              <div class="modal__description-item ">
+              <h3 class="modal__description-title">Sex</h3>
+                <p class="modal__description-value">${artist.strGender}</p>
+  
+                <h3 class="modal__description-title marg">Country</h3>
+                <p class="modal__description-value">${artist.strCountry}</p>
+              </div>
+            </div>
+  
+              <div class="modal__description-bio">
+                <h3 class="modal__description-bio-title">Biography</h3>
+  
+                <div class="modal__description-bio-scroll">
+                  <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
+                </div>
+             
+  
+  
+            <ul class="modal__description-genres-list">
+              ${artist.genres
+                .map(
+                  genre =>
+                    `<li class="modal__description-genres-item">${genre}</li>`
+                )
+                .join('')}
+            </ul>
+          </div>
         </div>
       </div>
       ${renderAlbums(albums)}
     </div>
   `;
-  modalRoot.style.display = 'flex';
+  modalRoot.style.display = 'grid';
 };
-  
-  const renderAlbums = albums => {
+
+const renderAlbums = albums => {
   if (!albums || !albums.length) return '';
 
   return `
@@ -134,9 +135,9 @@ const createAlbumCard = album => {
         ${album.tracks
           .map(track => {
             const minutes = Math.floor(track.intDuration / 60000);
-            const seconds = Math.floor(
-              (track.intDuration % 60000) / 1000
-            ).toString().padStart(2, '0');
+            const seconds = Math.floor((track.intDuration % 60000) / 1000)
+              .toString()
+              .padStart(2, '0');
 
             return `
               <div class="album-card__track">
@@ -144,7 +145,7 @@ const createAlbumCard = album => {
                 <span>${minutes}:${seconds}</span>
                 ${
                   track.movie && track.movie !== 'null'
-                    ? `<a href="${track.movie}" target="_blank" rel="noopener noreferrer" class="album-card__link"><svg class="icon icon-Vector"><use xlink:href="#icon-Vector"></use></svg></a>`
+                    ? `<a href="${track.movie}" target="_blank" rel="noopener noreferrer" class="album-card__link"><svg class="icon icon-Youtube"><use xlink:href="#icon-Youtube"></use></svg></a>`
                     : ''
                 }
               </div>
@@ -156,7 +157,6 @@ const createAlbumCard = album => {
     
   `;
 };
-
 
 const closeModal = modalRoot => {
   modalRoot.innerHTML = '';
