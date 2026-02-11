@@ -315,8 +315,8 @@ body {
 .about__img {
   display: block;
   width: 100%;
-  max-width: 343px;
-  height: 168px;
+  max-width: 288px;
+  height: 169px;
   -o-object-fit: cover;
      object-fit: cover;
   margin: 0 auto 48px auto;
