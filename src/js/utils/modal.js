@@ -77,22 +77,24 @@ const renderModal = (artist, albums, modalRoot) => {
                 <p class="modal__description-value">${artist.strCountry}</p>
               </div>
     
-              <div class="modal__description-bio">
-                <h3 class="modal__description-bio-title">Biography</h3>
-    
-                <div class="modal__description-bio-scroll">
-                  <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
+             <div class="modal__description-item-column">
+                <div class="modal__description-bio">
+                  <h3 class="modal__description-bio-title">Biography</h3>
+      
+                  <div class="modal__description-bio-scroll">
+                    <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
+                  </div>
                 </div>
-              </div>
-    
-              <ul class="modal__description-genres-list">
-                ${artist.genres
-                  .map(
-                    genre =>
-                      `<li class="modal__description-genres-item">${genre}</li>`
-                  )
-                  .join('')}
-              </ul>
+      
+                <ul class="modal__description-genres-list">
+                  ${artist.genres
+                    .map(
+                      genre =>
+                        `<li class="modal__description-genres-item">${genre}</li>`
+                    )
+                    .join('')}
+                </ul>
+             </div>
             </div>
           </div>
         </div>
