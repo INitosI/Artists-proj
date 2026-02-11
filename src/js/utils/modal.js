@@ -1,4 +1,4 @@
-import { fetchArtistById } from '../api/artists-api.js';
+import { fetchArtistById, fetchArtistAlbums } from '../api/artists-api.js';
 
 export const initModal = () => {
   const modalRoot = document.getElementById('modal-root');
@@ -18,14 +18,18 @@ export const initModal = () => {
     document.body.classList.add('more-open');
 
     try {
-      const artist = await fetchArtistById(artistId);
+      const [artist, albums] = await Promise.all([
+        fetchArtistById(artistId),
+        fetchArtistAlbums(artistId),
+      ]);
 
       if (!artist) {
         modalRoot.style.display = 'none';
         return;
       }
 
-      renderModal(artist, modalRoot);
+
+      renderModal(artist, albums, modalRoot);
     } catch (error) {
       modalRoot.style.display = 'none';
     }
@@ -41,7 +45,7 @@ export const initModal = () => {
   });
 };
 
-const renderModal = (artist, modalRoot) => {
+const renderModal = (artist, albums, modalRoot) => {
   modalRoot.innerHTML = `
     <div class="modal__content" role="dialog" aria-modal="true">
 
@@ -51,45 +55,105 @@ const renderModal = (artist, modalRoot) => {
       </div>
 
       <div class="modal__body">
-        <div class="modal__image-artist">
-          <img class="modal__image-artist-img" src="${artist.strArtistThumb}" alt="${artist.strArtistThumb}">
-        </div>
-
-        <div class="modal__description">
-          <div class="modal__description-grid">
-            <div class="modal__description-item" id="left-item">
-              <h3 class="modal__description-title">Years active</h3>
-              <p class="modal__description-value">${artist.yearsActive}</p>
-
-              <h3 class="modal__description-title marg" id="members-title">Members</h3>
-              <p class="modal__description-value" id="members-value">${artist.intMembers}</p>
-            </div>
-
-            <div class="modal__description-item" id="right-item">
-              <h3 class="modal__description-title" id="sex-title">Sex</h3>
-              <p class="modal__description-value" id="sex-value">${artist.strGender}</p>
-
-              <h3 class="modal__description-title marg">Country</h3>
-              <p class="modal__description-value">${artist.strCountry}</p>
-            </div>
+        <div class="modal__artist-info">
+          <div class="modal__image-artist">
+            <img  class="modal__image-artist-img" src="${artist.strArtistThumb}" alt="${artist.strArtistThumb}">
           </div>
-
-          <div class="modal__description-bio">
-            <h3 class="modal__description-bio-title">Biography</h3>
-            <div class="modal__description-bio-scroll">
-              <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
+  
+          <div class="modal__description">
+            <div class="modal__description-grid">
+              <div class="modal__description-item">
+                <h3 class="modal__description-title ">Years active</h3>
+                <p class="modal__description-value">${artist.yearsActive}</p>
+  
+                <h3 class="modal__description-title marg">Members</h3>
+                <p class="modal__description-value">${artist.intMembers}</p>
+              </div>
+  
+              <div class="modal__description-item ">
+              <h3 class="modal__description-title">Sex</h3>
+                <p class="modal__description-value">${artist.strGender}</p>
+  
+                <h3 class="modal__description-title marg">Country</h3>
+                <p class="modal__description-value">${artist.strCountry}</p>
+              </div>
             </div>
+  
+              <div class="modal__description-bio">
+                <h3 class="modal__description-bio-title">Biography</h3>
+  
+                <div class="modal__description-bio-scroll">
+                  <p class="modal__description-bio-text">${artist.strBiographyEN}</p>
+                </div>
+             
+  
+  
+            <ul class="modal__description-genres-list">
+              ${artist.genres
+                .map(
+                  genre =>
+                    `<li class="modal__description-genres-item">${genre}</li>`
+                )
+                .join('')}
+            </ul>
           </div>
-
-          <ul class="modal__description-genres-list">
-            ${artist.genres.map(genre => `<li class="modal__description-genres-item">${genre}</li>`).join('')}
-          </ul>
         </div>
+      </div>
+      ${renderAlbums(albums)}
+    </div>
+  `;
+  modalRoot.style.display = 'grid';
+};
+
+const renderAlbums = albums => {
+  if (!albums || !albums.length) return '';
+
+  return `
+    <div class="modal__albums">
+      <h3 class="modal__albums-title">Albums</h3>
+      <div class="modal__albums-list">
+        ${albums.map(createAlbumCard).join('')}
       </div>
     </div>
   `;
+};
 
-  modalRoot.style.display = 'flex';
+const createAlbumCard = album => {
+  return `
+    <div class="modal__album-card">
+    
+      <h4 class="album-card__tracks-card-title">${album.strAlbum}</h4>
+
+      <div class="album-card__track-lesheader">
+        <span>Track</span>
+        <span>Time</span>
+        <span>Link</span>
+      </div>
+      <div class="modal__albums-tracks-list">
+        ${album.tracks
+          .map(track => {
+            const minutes = Math.floor(track.intDuration / 60000);
+            const seconds = Math.floor((track.intDuration % 60000) / 1000)
+              .toString()
+              .padStart(2, '0');
+
+            return `
+              <div class="album-card__track">
+                <span>${track.strTrack}</span>
+                <span>${minutes}:${seconds}</span>
+                ${
+                  track.movie && track.movie !== 'null'
+                    ? `<a href="${track.movie}" target="_blank" rel="noopener noreferrer" class="album-card__link"><svg class="icon icon-Youtube"><use xlink:href="#icon-Youtube"></use></svg></a>`
+                    : ''
+                }
+              </div>
+            `;
+          })
+          .join('')}
+      </div>
+    </div>
+    
+  `;
 };
 
 const closeModal = modalRoot => {
