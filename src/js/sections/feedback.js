@@ -1,7 +1,7 @@
 import Swiper from 'swiper';
 import 'swiper/css';
-import { Navigation, Pagination } from 'swiper/modules';
-import raty from 'raty-js';
+import { Navigation } from 'swiper/modules';
+// import raty from 'raty-js';
 import { fetchFeedbacks } from '../api/feedback-api';
 import { initFeedbackStars } from '../utils/feedback-stars';
 
@@ -19,6 +19,7 @@ import { initFeedbackStars } from '../utils/feedback-stars';
 const refs = {
   section: document.querySelector('.feedback'),
   wrapper: document.querySelector('.feedback__wrapper'),
+    pagination: document.querySelector('.feedback__pagination'), // контейнер для трьох точок пагінації
   dotFirst: document.querySelector('.feedback__dot--first'),
   dotMiddle: document.querySelector('.feedback__dot--middle'),
   dotLast: document.querySelector('.feedback__dot--last'),
@@ -54,6 +55,38 @@ const setActiveDot = type => {
     refs.dotMiddle.classList.add('is-active');
   if (type === 'last' && refs.dotLast) refs.dotLast.classList.add('is-active');
 };
+
+// функція для анімації середньої точки при переході між слайдами
+const animateMiddleDot = direction => {
+  if (!refs.dotMiddle) return;
+
+  // якщо анімація вже є, скасовуємо її, щоб не було конфліктів при швидкій навігації
+  if (refs.dotMiddle.__anim) {
+    refs.dotMiddle.__anim.cancel();
+    refs.dotMiddle.__anim = null;
+  }
+
+  const offset = direction === 'left' ? -10 : 10;
+
+  // створюємо анімацію для середньої точки, яка зміщує її вліво або вправо на 10px і повертає назад
+  refs.dotMiddle.__anim = refs.dotMiddle.animate(
+    [
+      { transform: 'translateX(0)' },
+      { transform: `translateX(${offset}px)` },
+      { transform: 'translateX(0)' },
+    ],
+    {
+      duration: 220,
+      easing: 'ease-in-out',
+    }
+  );
+
+  refs.dotMiddle.__anim.onfinish = () => {
+    refs.dotMiddle.__anim = null;
+  };
+};
+
+
 
 /**
  * Цю функцію буде викликати розробник зі Swiper:
@@ -125,7 +158,7 @@ const initSwiper = slidesCount => {
   }
     swiperInstance = new Swiper('.feedback__slider', {
     
-    modules: [Navigation, Pagination],
+    modules: [Navigation],
     slidesPerView: 1,
     spaceBetween: 24,
     loop: false,
@@ -138,9 +171,20 @@ const initSwiper = slidesCount => {
     on: {
       init(swiper) {
         updateFeedbackPagination(swiper.activeIndex, slidesCount);
+        swiper.__prevIndex = swiper.activeIndex; // запам'ятовуємо стартовий індекс
       },
       slideChange(swiper) {
-        updateFeedbackPagination(swiper.activeIndex, slidesCount);
+        const prev = swiper.__prevIndex ?? 0;
+        const current = swiper.activeIndex;
+
+        if (current > prev) {
+          animateMiddleDot('right');
+        } else if (current < prev) {
+          animateMiddleDot('left');
+        }
+
+        updateFeedbackPagination(current, slidesCount);
+        swiper.__prevIndex = current;
       },
     },
   });

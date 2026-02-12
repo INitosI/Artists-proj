@@ -1,7 +1,59 @@
 <header class="header">
-  <div class="container">
-    <nav class="header__nav">
-      <p>Header</p>
+  <div class="container header__container">
+    <a class="header__logo" href="./index.html" aria-label="Перехід на головну сторінку">
+      <img class="header__logo-img" src="/img/Company-Logo.svg" alt="Логотип Artists Hub" />
+    </a>
+
+    <nav class="header__nav" aria-label="Головна навігація">
+      <ul class="header__nav-list">
+        <li class="header__nav-item">
+          <a class="header__nav-link" href="#artists">Artists</a>
+        </li>
+      
+        <li class="header__nav-item">
+          <a class="header__nav-link" href="#about">About Us</a>
+        </li>
+      
+        <li class="header__nav-item">
+          <a class="header__nav-link" href="#reviews">Reviews</a>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="burger" type="button" data-menu-open>
+      <svg class="burger__icon" width="24" height="24">
+        <use href="/img/icons.svg#icon-menu-alt-right"></use>
+      </svg>
+    </button>      
+  </div>        
+</header>
+
+<div class="mobile-menu" data-menu>
+  <div class="mobile-menu__container container">
+  <div class="mobile-menu__header">
+    <a class="mobile-menu__logo" href="./index.html" aria-label="Перехід на головну сторінку">
+      <img class="mobile-menu__logo-img" src="/img/Company-Logo.svg" alt="Логотип Artists Hub"/>
+    </a>
+
+    <button type="button" class="mobile-menu__close" data-menu-close aria-label="Закрити меню">
+      <svg class="mobile-menu__close-icon" width="24" height="24">
+        <use href="/img/icons.svg#icon-x"></use>
+      </svg>
+    </button>
+  </div>
+
+    <nav class="mobile-menu__nav" aria-label="Мобільна навігація">
+      <ul class="mobile-menu__nav-list">
+        <li class="mobile-menu__nav-item">
+          <a class="mobile-menu__nav-link" href="#artists">Artists</a>
+        </li>
+        <li class="mobile-menu__nav-item">
+          <a class="mobile-menu__nav-link" href="#about">About Us</a>
+        </li>
+        <li class="mobile-menu__nav-item">
+          <a class="mobile-menu__nav-link" href="#reviews">Reviews</a>
+        </li>
+      </ul>
     </nav>
   </div>
-</header>
+</div>

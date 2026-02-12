@@ -133,9 +133,18 @@
 
     &.is-active {
       background-color: $white;
+    }    
+    
+    &__dot--middle {
+      &.is-move-left {
+        animation: feedbackDotMoveLeft 220ms ease-in-out;
+      }
+
+      &.is-move-right {
+        animation: feedbackDotMoveRight 220ms ease-in-out;
+      }
     }
   }
-
   // ------ Tablet ------
   @media only screen and (min-width: 768px) {
     padding: 64px 0;
@@ -172,3 +181,16 @@
     }
   }
 }
+
+@keyframes feedbackDotMoveLeft {
+  0% { transform: translateX(0); }
+  45% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes feedbackDotMoveRight {
+  0% { transform: translateX(0); }
+  45% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
