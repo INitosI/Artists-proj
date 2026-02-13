@@ -1,7 +1,7 @@
 import Swiper from 'swiper';
 import 'swiper/css';
-import { Navigation, Pagination } from 'swiper/modules';
-import raty from 'raty-js';
+import { Navigation } from 'swiper/modules';
+// import raty from 'raty-js';
 import { fetchFeedbacks } from '../api/feedback-api';
 import { initFeedbackStars } from '../utils/feedback-stars';
 
@@ -158,7 +158,7 @@ const initSwiper = slidesCount => {
   }
     swiperInstance = new Swiper('.feedback__slider', {
     
-    modules: [Navigation, Pagination],
+    modules: [Navigation],
     slidesPerView: 1,
     spaceBetween: 24,
     loop: false,
