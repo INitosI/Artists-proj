@@ -1,28 +1,28 @@
 import Swiper from 'swiper';
 import 'swiper/css';
-import { Navigation } from 'swiper/modules';
-// import raty from 'raty-js';
+import { Navigation, Pagination } from 'swiper/modules';
 import { fetchFeedbacks } from '../api/feedback-api';
 import { initFeedbackStars } from '../utils/feedback-stars';
-
+import { openFeedbackModal } from '../utils/feedback-modal';
 
 /**
  * Feedback section
  * ВІДПОВІДАЛЬНІСТЬ ФАЙЛУ:
- * - отримати 10 відгуків з API
- * - зрендерити HTML-картки (.swiper-slide)
- * - округлити рейтинг (Math.round)
- * - керувати індикатором пагінації (3 елементи)
+ * - отримання даних відгуків з API
+ * - рендеринг відгуків у вигляді слайдів у Swiper
+ * - ініціалізація пагінації та навігації для слайдера
+ * - обробка кліку на кнопку "Leave feedback" для відкриття модального вікна з формою відгуку
  */
 
 //  посилання на елементи DOM для подальшого використання в функціях
 const refs = {
   section: document.querySelector('.feedback'),
   wrapper: document.querySelector('.feedback__wrapper'),
-    pagination: document.querySelector('.feedback__pagination'), // контейнер для трьох точок пагінації
+  pagination: document.querySelector('.feedback__pagination'), 
   dotFirst: document.querySelector('.feedback__dot--first'),
   dotMiddle: document.querySelector('.feedback__dot--middle'),
   dotLast: document.querySelector('.feedback__dot--last'),
+  leaveBtn: document.querySelector('.feedback__leave-btn'),
 };
 
 //  функція для безпечного виводу тексту в HTML
@@ -86,12 +86,7 @@ const animateMiddleDot = direction => {
   };
 };
 
-
-
-/**
- * Цю функцію буде викликати розробник зі Swiper:
- * updateFeedbackPagination(swiper.activeIndex, swiper.slides.length)
- */
+// функція для оновлення пагінації на основі поточного індексу слайда і загальної кількості слайдів
 export const updateFeedbackPagination = (activeIndex, totalSlides) => {
   //якщо є лише один слайд, то активуємо першу точку і виходимо
   if (totalSlides <= 1) {
@@ -152,6 +147,7 @@ const renderSlides = items => {
 
 let swiperInstance = null;
 
+// функція для ініціалізації Swiper з потрібними налаштуваннями та обробниками подій
 const initSwiper = slidesCount => {
   if (swiperInstance) {
     swiperInstance.destroy(true, true);
@@ -195,6 +191,10 @@ const initSwiper = slidesCount => {
 // головна функція для ініціалізації секції відгуків
 export const initFeedback = async () => {
   if (!refs.section || !refs.wrapper) return;
+
+  if (refs.leaveBtn) {
+  refs.leaveBtn.addEventListener('click', openFeedbackModal);
+  }
 
   try {
     // отримуємо відгуки з API
