@@ -154,7 +154,7 @@ const initSwiper = slidesCount => {
   }
     swiperInstance = new Swiper('.feedback__slider', {
     
-    modules: [Navigation, Pagination],
+    modules: [Navigation],
     slidesPerView: 1,
     spaceBetween: 24,
     loop: false,
