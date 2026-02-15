@@ -11,7 +11,7 @@ const refs = {
 };
 
 // дефолтне значення рейтингу для нових відгуків
-const DEFAULT_RATING = 0; 
+const DEFAULT_RATING = 5; 
 
 // правила валідації для полів форми
 const VALIDATION = {
@@ -21,6 +21,26 @@ const VALIDATION = {
 };
 
 let escHandler = null;
+
+
+const STORAGE_KEY = 'feedback-form-data';
+
+// функції для роботи з тимчасовим збереженням даних форми у sessionStorage
+const saveFormState = data => {
+  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+};
+
+// функція для завантаження збережених даних форми, якщо вони є
+const loadFormState = () => {
+  const raw = sessionStorage.getItem(STORAGE_KEY);
+  return raw ? JSON.parse(raw) : null;
+};
+
+// функція для очищення збережених даних форми після успішної відправки або закриття модалки
+const clearFormState = () => {
+  sessionStorage.removeItem(STORAGE_KEY);
+};
+
 
 // функція для створення HTML-розмітки модального вікна з формою відгуку
 const buildModalMarkup = () => `
@@ -58,6 +78,17 @@ const openModal = () => {
 
   refs.modalRoot.innerHTML = buildModalMarkup();
 
+  const saved = loadFormState();
+
+  if (saved) {
+    const nameInput = refs.modalRoot.querySelector('input[name="name"]');
+    const descrInput = refs.modalRoot.querySelector('textarea[name="descr"]');
+
+    if (nameInput) nameInput.value = saved.name || '';
+    if (descrInput) descrInput.value = saved.descr || '';
+  }
+
+
  // показуємо модалку
   refs.modalRoot.style.display = 'flex';
 
@@ -67,18 +98,28 @@ const openModal = () => {
 
   const closeBtn = refs.modalRoot.querySelector('.feedback-modal__close-btn');
   const form = refs.modalRoot.querySelector('.feedback-modal__form');
-
+  
+ 
   if (!closeBtn || !form) {
     closeModal();
     return;
   }
+
+   form.addEventListener('input', () => {
+    saveFormState({
+      name: form.name.value,
+      descr: form.descr.value,
+    });
+  });
 
   closeBtn.addEventListener('click', closeModal);
 
   // обробник для закриття модалки по кліку на бекдроп
   refs.modalRoot.addEventListener('click', e => {
     if (e.target === refs.modalRoot) closeModal();
-  });
+    },
+    { once: true }
+  );
 
   // обробник для закриття модалки по клавіші Escape
   escHandler = e => {
@@ -88,6 +129,7 @@ const openModal = () => {
 
   form.addEventListener('submit', onSubmit);
 };
+
 
 // функція для закриття модального вікна та очищення ресурсів
 const closeModal = () => {
@@ -200,7 +242,9 @@ const onSubmit = async e => {
       position: 'topRight',
     });
 
+    clearFormState(); // очищаємо збережений стан форми після успішної відправки
     closeModal();
+
   } catch (error) {
     iziToast.error({
       title: 'Error',
